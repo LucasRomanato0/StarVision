@@ -13,6 +13,17 @@ function checkLoginAndPassword(req, res, next) {
   return next();
 }
 
+function checkIndex(req, res, next) {
+  const user = users[req.param.index];
+  if (!user) {
+    return res.status(400).json({ error: "Este user não existe" });
+  }
+
+  req.user = user;
+
+  return next();
+}
+
 app.post("/cadastro", checkLoginAndPassword, (req, res) => {
   const { login, email, phone, password } = req.body;
   const newUser = {
@@ -47,7 +58,7 @@ app.post("/login", checkLoginAndPassword, (req, res) => {
   }
 });
 
-app.get("/get-user/:index", (req, res) => {
+app.get("/get-user/:index", checkIndex, (req, res) => {
   const { index } = req.params;
 
   console.log("index: " + index);
@@ -59,7 +70,7 @@ app.get("/get-user", (req, res) => {
   return res.json(users);
 });
 
-app.put("/update-user/:index", (req, res) => {
+app.put("/update-user/:index", checkIndex, (req, res) => {
   const { index } = req.params;
   const { login, email, password } = req.body;
 
@@ -79,7 +90,7 @@ app.put("/update-user/:index", (req, res) => {
   return res.json({ message: "usuario atualizado" });
 });
 
-app.delete("/delete-user/:index", (req, res) => {
+app.delete("/delete-user/:index", checkIndex, (req, res) => {
   const { index } = req.params;
 
   console.log("User deletado: " + users[index].login);
@@ -90,4 +101,4 @@ app.delete("/delete-user/:index", (req, res) => {
   });
 });
 
-app.listen(3000);
+app.listen(3005);
