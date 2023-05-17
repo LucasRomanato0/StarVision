@@ -5,100 +5,105 @@ app.use(express.json());
 
 const users = [];
 
-function checkLoginAndPassword(req, res, next) {
+function checkLoginOrPassword(req, res, next) {
   if (!req.body.login || !req.body.password) {
-    return res.status(400).json({ error: "campo obrigatorio faltando." });
+    return res.status(400).json({ error: "Field is missing." });
   }
 
   return next();
 }
 
-function checkIndex(req, res, next) {
-  const user = users[req.param.index];
-  if (!user) {
-    return res.status(400).json({ error: "Este user não existe" });
-  }
+app.post("/cadastro", checkLoginOrPassword, (req, res) => {
+  try {
+    const { login, email, phone, password } = req.body;
+    const newUser = {
+      login: login,
+      email: email,
+      phone: phone,
+      password: password,
+    };
+    const found = users.find((user) => user.login == login);
 
-  req.user = user;
+    if (!found) {
+      users.push(newUser);
+      console.log("user criado");
 
-  return next();
-}
-
-app.post("/cadastro", checkLoginAndPassword, (req, res) => {
-  const { login, email, phone, password } = req.body;
-  const newUser = {
-    login: login,
-    email: email,
-    phone: phone,
-    password: password,
-  };
-  const found = users.find((user) => user.login == login);
-
-  if (!found) {
-    users.push(newUser);
-    console.log("user criado");
-    return res.json({ message: "usuario criado" });
-  } else {
-    return res.json({
-      message: `usuário com login '${login}' já existente`,
-    });
+      res.status(201).json({ message: `User '${login}' created` });
+    } else {
+      res.status(403).json({
+        message: `User '${login} already exists'`,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-app.post("/login", checkLoginAndPassword, (req, res) => {
-  const { login, password } = req.body;
-  const found = users.find(
-    (user) => user.login == login && user.password == password
-  );
+app.post("/login", checkLoginOrPassword, (req, res) => {
+  try {
+    const { login, password } = req.body;
+    const found = users.find(
+      (user) => user.login == login && user.password == password
+    );
 
-  if (!found) {
-    return res.json({ message: "usuario nao encontrado" });
-  } else {
-    return res.json({ message: "login realizado com sucesso" });
+    if (!found) {
+      res.status(402).json({ message: "Login or password invalid" });
+    } else {
+      res.status(200).json({ message: "Login succeeded" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-});
-
-app.get("/get-user/:index", checkIndex, (req, res) => {
-  const { index } = req.params;
-
-  console.log("index: " + index);
-
-  return res.json(users[index]);
 });
 
 app.get("/get-user", (req, res) => {
-  return res.json(users);
+  res.status(200).json(users);
 });
 
-app.put("/update-user/:index", checkIndex, (req, res) => {
-  const { index } = req.params;
-  const { login, email, password } = req.body;
+app.put("/update-user", checkLoginOrPassword, (req, res) => {
+  const { login, email, phone, password } = req.body;
+  const found = users.find((user) => user.login == login);
+  const index = users.indexOf(found);
 
-  if (login !== undefined) {
-    users[index].login = login;
-    console.log("login atualizado");
-  }
-  if (email !== undefined) {
-    users[index].email = email;
-    console.log("email atualizado");
-  }
-  if (password !== undefined) {
-    users[index].password = password;
-    console.log("senha atualizada");
-  }
+  if (found) {
+    // if (login !== undefined) {
+    //   users[index].login = login;
+    //   console.log("login atualizado");
+    // }
+    if (email !== undefined) {
+      users[index].email = email;
+      console.log("email atualizado");
+    }
+    if (phone !== undefined) {
+      users[index].phone = phone;
+      console.log("phone atualizado");
+    }
+    if (password !== undefined) {
+      users[index].password = password;
+      console.log("senha atualizada");
+    } // falta auth
 
-  return res.json({ message: "usuario atualizado" });
+    res.status(201).json({ message: `User '${login}' updated` });
+  } else {
+    res.status(401).json({ error: `Error to update user '${login}'` });
+  }
 });
 
-app.delete("/delete-user/:index", checkIndex, (req, res) => {
-  const { index } = req.params;
+app.delete("/delete-user", (req, res) => {
+  const { login } = req.body;
+  const found = users.find((user) => user.login == login);
+  const index = users.indexOf(found);
 
-  console.log("User deletado: " + users[index].login);
+  if (found) {
+    console.log("User deletado: " + users[index].login);
 
-  users.splice(index, 1);
-  return res.json({
-    message: `User deletado com sucesso!`,
-  });
+    users.splice(index, 1);
+    res.status(201).json({ message: `User '${login} deleted'` });
+  } else {
+    res.status(401).json({ error: `Error to delete user '${login}'` });
+  }
 });
 
 app.listen(3005);
