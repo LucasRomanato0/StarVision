@@ -92,17 +92,22 @@ app.put("/update-user", checkLoginOrPassword, (req, res) => {
 });
 
 app.delete("/delete-user", (req, res) => {
-  const { login } = req.body;
-  const found = users.find((user) => user.login == login);
-  const index = users.indexOf(found);
+  try {
+    const { login } = req.body;
+    const found = users.find((user) => user.login == login);
+    const index = users.indexOf(found);
 
-  if (found) {
-    console.log("User deletado: " + users[index].login);
+    if (found) {
+      console.log("User deletado: " + users[index].login);
 
-    users.splice(index, 1);
-    res.status(201).json({ message: `User '${login} deleted'` });
-  } else {
-    res.status(401).json({ error: `Error to delete user '${login}'` });
+      users.splice(index, 1);
+      res.status(201).json({ message: `User '${login} deleted'` });
+    } else {
+      res.status(401).json({ error: `Error to delete user '${login}'` });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
