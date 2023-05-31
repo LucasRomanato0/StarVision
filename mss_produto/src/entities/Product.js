@@ -1,6 +1,6 @@
 class Product {
-  constructor(code, name, description, price, photo) {
-    this.code = code;
+  constructor({ id, name, description, price, photo }) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
@@ -8,4 +8,4 @@ class Product {
   }
 }
 
-module.exports(Product);
+module.exports = Product;
