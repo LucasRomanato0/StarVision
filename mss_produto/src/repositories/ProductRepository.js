@@ -22,9 +22,7 @@ class ProductRepository extends IProductRepository {
 
   //Read
   getById(id) {
-    let found = this.products.find(
-      (product) => product.id.toString() === id.toString()
-    );
+    let found = this.products.find((product) => product.id === id);
 
     return found ? [found] : [];
   }

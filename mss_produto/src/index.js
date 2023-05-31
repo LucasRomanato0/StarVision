@@ -6,14 +6,17 @@ app.use(express.json());
 const port = process.env.PORT || 3030;
 
 const ProductRepository = require("./repositories/ProductRepository");
-const Product = require("./entities/Product");
-const repo = new ProductRepository();
+const productRepo = new ProductRepository();
 
+const CartRepository = require("./repositories/CartRepository");
+const cartRepo = new CartRepository(productRepo);
+
+// ------------------------- PRODUTOS ----------------------------
 app.post("/products", async (req, res) => {
   try {
     const { id, name, description, price, photo } = req.body;
 
-    const found = await repo.getById(id);
+    const found = await productRepo.getById(id);
 
     const newProduct = {
       id: id,
@@ -27,7 +30,7 @@ app.post("/products", async (req, res) => {
       res.status(400).json({ message: "Product id is missing" });
     } else {
       if (found.length === 0) {
-        await repo.store(newProduct);
+        await productRepo.store(newProduct);
 
         res.status(201).json(newProduct);
       } else {
@@ -42,7 +45,7 @@ app.post("/products", async (req, res) => {
 
 app.get("/products", async (req, res) => {
   try {
-    let products = await repo.getAll();
+    let products = await productRepo.getAll();
 
     if (products.length === 0) {
       res.status(404).json({ message: "No products found. Register one." });
@@ -58,7 +61,7 @@ app.get("/products", async (req, res) => {
 app.get("/products/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const found = await repo.getById(id);
+    const found = await productRepo.getById(id);
 
     if (found.length !== 0) {
       res.status(200).json(found);
@@ -79,12 +82,12 @@ app.put("/products/:id", async (req, res) => {
     if (!id) {
       res.status(400).json({ message: "Product id is missing" });
     } else {
-      const found = await repo.getById(id);
+      const found = await productRepo.getById(id);
 
       if (found.length !== 0) {
-        await repo.update({ id, name, description, price, photo });
+        await productRepo.update({ id, name, description, price, photo });
 
-        res.status(200).json(repo.getById(id));
+        res.status(200).json(productRepo.getById(id));
       } else {
         res.status(404).json({
           message: `Error to update product. Product not found for id: ${id}`,
@@ -100,17 +103,34 @@ app.put("/products/:id", async (req, res) => {
 app.delete("/products", async (req, res) => {
   try {
     const { id } = req.body;
-    const found = repo.getById(id);
+    const found = productRepo.getById(id);
 
     if (!id) {
       res.status(400).json({ message: "Product id is missing" });
     } else {
       if (found.length !== 0) {
-        repo.delete(id);
-        res.status(200).type("application/json").send(repo.getAll());
+        productRepo.delete(id);
+        res.status(200).type("application/json").send(productRepo.getAll());
       } else {
         res.status(404).json({ message: "Product not found" });
       }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ------------------------- CARRINHO ----------------------------
+app.post("/cart", async (req, res) => {
+  try {
+    const { id, qtd } = req.body;
+    const foundProduct = productRepo.getById(id).length !== 0;
+
+    if (foundProduct) {
+      cartRepo.add(id, qtd);
+    } else {
+      res.status(404).json({ message: "Product not found" });
     }
   } catch (error) {
     console.log(error);
