@@ -7,6 +7,7 @@ Projeto de loja online para as disciplinas ECM516 e ECM252.
 - Lucas Romanato            RA: 20.00313-7
 
 # Como iniciar um projeto React 💽
+Os comandos principais.
 ## Para criar o projeto:
 - npx create-react-app nome-app
 ## Para rodar:
