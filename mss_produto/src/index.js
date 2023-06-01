@@ -124,13 +124,60 @@ app.delete("/products", async (req, res) => {
 // ------------------------- CARRINHO ----------------------------
 app.post("/cart", async (req, res) => {
   try {
-    const { id, qtd } = req.body;
+    const { id } = req.body;
     const foundProduct = productRepo.getById(id).length !== 0;
 
-    if (foundProduct) {
-      cartRepo.add(id, qtd);
+    if (!id) {
+      res.status(400).json({ message: "Product id is missing" });
     } else {
-      res.status(404).json({ message: "Product not found" });
+      if (foundProduct) {
+        cartRepo.add(id);
+        res.status(201).json(cartRepo.getById(id));
+      } else {
+        res.status(404).json({ message: "Product not found" });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/cart", async (req, res) => {
+  try {
+    let cart = await cartRepo.getAllCart();
+    if (cart.length > 0) {
+      res.status(200).json(cart);
+    } else {
+      res.status(404).json({ message: "Empty" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.delete("/cart", async (req, res) => {
+  try {
+    const { id } = req.body;
+    const foundProduct = productRepo.getById(id).length !== 0;
+
+    if (!id) {
+      res.status(400).json({ message: "Product id is missing" });
+    } else {
+      if (foundProduct) {
+        const productInCart = cartRepo.getById(id);
+
+        if (productInCart.length !== 0) {
+          cartRepo.remove(id);
+          let cart = await cartRepo.getAllCart();
+          res.status(200).json(cart);
+        } else {
+          res.status(404).json({ message: `Product ${id} not in cart` });
+        }
+      } else {
+        res.status(404).json({ message: "Product not found" });
+      }
     }
   } catch (error) {
     console.log(error);

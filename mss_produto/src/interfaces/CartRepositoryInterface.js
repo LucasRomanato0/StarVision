@@ -1,5 +1,5 @@
 class ICartRepository {
-  add({ id, qtd }) {
+  add(id) {
     throw new Error("Method 'add' must be implemented");
   }
 }
