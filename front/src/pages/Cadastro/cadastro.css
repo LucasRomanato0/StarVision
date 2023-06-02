@@ -1,0 +1,7 @@
+.hr-lightsaber {
+  width: 100%;
+  margin: 5px 0px 20px 0px;
+  border: 1px solid #0075b8e5;
+  border-radius: 10px;
+  /* box-shadow: 5px 5px 5px 0px #0075b8e5; */
+}
