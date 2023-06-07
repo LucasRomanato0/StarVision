@@ -41,6 +41,10 @@ function Login() {
               <span className="focus-input" data-placeholder="Senha"></span>
             </div>
 
+            <div className="ancora-senha">
+              <a href="">Esqueci minha senha</a>
+            </div>
+
             {/* botao login */}
             <div className="container-login-form-btn">
               <button className="login-form-btn">Login</button>

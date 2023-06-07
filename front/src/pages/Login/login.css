@@ -150,11 +150,25 @@
   width: 100%;
 }
 
+.ancora-senha {
+  /* background-color: #ffdd00; */
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+  margin-top: -30px;
+  font-size: 15px;
+  justify-content: end;
+}
+
+.ancora-senha a {
+  color: #c9c9c9;
+}
+
 .container-login-form-btn {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 13px;
+  /* padding-bottom: 13px; */
 }
 
 .login-form-btn {
@@ -188,6 +202,10 @@
   align-items: center;
 
   margin-top: 50px;
+}
+
+.text-center a {
+  color: #0075b8e5;
 }
 
 .txt1 {
