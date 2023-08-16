@@ -1,12 +1,12 @@
 import NavBar from "../../components/NavBar";
 
-function AboutUs() {
+function Suporte() {
   return (
     <div>
       <NavBar />
-      <h1>SOBRE NÓS</h1>
+      <h1>SUPORTE</h1>
     </div>
   );
 }
 
-export default AboutUs;
+export default Suporte;
