@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./cadastro.css";
+import { Link } from "react-router-dom";
 
 function Cadastro() {
   const [username, setUsername] = useState("");
@@ -84,6 +85,7 @@ function Cadastro() {
             {/* botao cadastre-se */}
             <div className="container-login-form-btn">
               <button className="login-form-btn">Cadastre-se</button>
+              <Link to={"/aboutus"}>teste</Link>
             </div>
           </form>
         </div>

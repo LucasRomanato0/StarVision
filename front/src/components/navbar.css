@@ -1,0 +1,85 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 60px;
+  background-color: #081720;
+}
+
+.div-logo {
+  width: 17%;
+  display: flex;
+  flex-direction: row;
+
+  margin: 10;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 10vh;
+  height: 10vh;
+}
+
+.text-logo {
+  background: -webkit-linear-gradient(#00a3ff, rgba(76, 117, 141, 0.411));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.infos {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  font-size: 20px;
+}
+
+.aboutus {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.promocoes {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.aplicativo {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.suporte {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.perfil {
+  display: flex;
+  flex-direction: row;
+
+  margin: 10;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login {
+  cursor: pointer;
+  padding: 5px 14px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+.carrinho {
+  width: 5vh;
+  height: 5vh;
+}
