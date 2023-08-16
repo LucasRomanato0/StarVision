@@ -2,17 +2,37 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  async function handleLogin(e) {
+    e.prevendDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3005/login", {
+        email,
+        password,
+      });
+
+      if (response.status == 200) {
+        console.log("usuario logado");
+        navigate = "/aboutus";
+      }
+    } catch (error) {
+      console.log("Erro ao logar o usuario: ", error);
+    }
+  }
 
   return (
     <div className="container">
       <div className="container-login">
         <div className="wrap-login">
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleLogin}>
             {/* parte de cima */}
             <span className="login-form-title">Bem Vindo!</span>
             <span className="login-form-title">
