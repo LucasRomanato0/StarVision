@@ -84,8 +84,9 @@ function Cadastro() {
 
             {/* botao cadastre-se */}
             <div className="container-login-form-btn">
-              <button className="login-form-btn">Cadastre-se</button>
-              <Link to={"/aboutus"}>teste</Link>
+              <Link to={"/aboutus"} className="login-form-btn">
+                Cadastre-se
+              </Link>
             </div>
           </form>
         </div>

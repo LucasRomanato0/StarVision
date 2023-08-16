@@ -190,6 +190,8 @@
   height: 50px;
 
   background-color: #ffdd00;
+
+  text-decoration: none;
 }
 
 .login-form-btn:hover {

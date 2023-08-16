@@ -47,7 +47,9 @@ function Login() {
 
             {/* botao login */}
             <div className="container-login-form-btn">
-              <button className="login-form-btn">Login</button>
+              <Link to={"/aboutus"} className="login-form-btn">
+                Login
+              </Link>
             </div>
 
             {/* cadastre-se */}
