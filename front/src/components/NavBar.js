@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import logo from "../assets/logo.png";
 import shop_cart from "../assets/shop_cart.png";
+import lupa from "../assets/lupa.png";
 
 export default function NavBar() {
   return (
@@ -16,15 +17,21 @@ export default function NavBar() {
         <Link className="aboutus" to="/aboutus">
           Sobre nós
         </Link>
-        <Link className="promocoes" to="/">
-          Promoções
+        <Link className="produtos" to="/produtos">
+          Produtos
         </Link>
-        <Link className="aplicativo" to="/">
+        <Link className="aplicativo" to="/app">
           Aplicativo
         </Link>
-        <Link className="suporte" to="/">
+        <Link className="suporte" to="/suport">
           Suporte
         </Link>
+      </div>
+
+      <div className="wrap-search">
+        <input className="search" />
+        <span className="busca-input" data-placeholder="Buscar"></span>
+        <img src={lupa} alt="Bucar" className="lupa" />
       </div>
 
       <div className="perfil">

@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
 
   async function handleLogin(e) {
-    e.prevendDefault();
+    e.preventDefault();
 
     try {
       const response = await axios.post("http://localhost:3005/login", {
@@ -19,9 +19,9 @@ function Login() {
         password,
       });
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         console.log("usuario logado");
-        navigate = "/aboutus";
+        navigate("/aboutus");
       }
     } catch (error) {
       console.log("Erro ao logar o usuario: ", error);
@@ -70,6 +70,9 @@ function Login() {
               <Link to={"/aboutus"} className="login-form-btn">
                 Login
               </Link>
+              {/* <button className="login-form-btn" type="submit">
+                Login
+              </button> */}
             </div>
 
             {/* cadastre-se */}
