@@ -1,5 +1,6 @@
 import NavBar from "../../components/NavBar/NavBar";
 import ContainerCompra from "../../components/Compra/ContainerCompra";
+import CarrinhoSugestao from "../../components/CarrinhoSugestao/CarrinhoSugestao";
 
 import r2d2_cor from "../../assets/r2d2_cor.png";
 import d0 from "../../assets/d0.png";
@@ -41,20 +42,27 @@ function Carrinho() {
         <div className="colum-direita">
           {/* Subtotal */}
           <div className="subtotal">
-            <p>{"Subtotal (2 itens):"}</p>
-            <p>R$689,98</p>
+            <p className="p-subtotal">{"Subtotal (2 itens):"}</p>
+            <p className="preco-subtotal">R$689,98</p>
             <button className="btn-fechar-pedido">Fechar pedido</button>
           </div>
 
           {/* sugestoes */}
           <div className="sugestoes">
-            <img src={suporte} alt="Suporte" />
-            <div className="colum-sugestao">
-              <p className="desc-sugestao">Suporte para carregar o Droid D-0</p>
-              <p>R$100,00</p>
-              <button className="adc-cart">Adicionar ao carrinho</button>
-            </div>
-            <hr />
+            <p className="p-sugestao">Você também pode gostar:</p>
+
+            <CarrinhoSugestao
+              img={suporte}
+              descricao1={"Suporte para carregar"}
+              descricao2={"o Droid D-0"}
+              preco={"R$100,00"}
+            />
+            <CarrinhoSugestao
+              img={pneu}
+              descricao1={"Rodas extras R2D2"}
+              descricao2={"padrão"}
+              preco={"R$59,99 cada"}
+            />
           </div>
         </div>
       </div>

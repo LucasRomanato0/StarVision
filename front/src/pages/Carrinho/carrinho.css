@@ -74,7 +74,7 @@
 
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   padding: 0 50px;
 
@@ -95,6 +95,7 @@
 
   overflow: hidden;
   margin-top: 30px;
+  margin-bottom: 30px;
   padding: 20px 20px;
   color: #fff;
 
@@ -103,4 +104,81 @@
 
 .container-compras h1 {
   font-size: 50px;
+}
+
+.colum-direita {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: space-around;
+  background: linear-gradient(#081720, #081720) padding-box,
+    linear-gradient(to right, #0075b8e5, #ffdd00) border-box;
+
+  border-radius: 10px;
+  border: 2px solid transparent;
+  width: 100%;
+
+  overflow: hidden;
+  padding: 20px 20px;
+  margin-bottom: 30px;
+  color: #fff;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.p-subtotal {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.preco-subtotal {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn-fechar-pedido {
+  width: 60%;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+
+  background-color: #ffd800;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.sugestoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: space-around;
+  background: linear-gradient(#081720, #081720) padding-box,
+    linear-gradient(to right, #0075b8e5, #ffdd00) border-box;
+
+  border-radius: 10px;
+  border: 2px solid transparent;
+  width: 100%;
+
+  overflow: hidden;
+  padding: 20px 20px;
+  margin-bottom: 30px;
+  color: #fff;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.p-sugestao {
+  font-size: 25px;
+  margin-bottom: 30px;
 }
