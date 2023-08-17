@@ -38,7 +38,10 @@ export default function NavBar() {
         <Link to={"/login"} className="login">
           Login
         </Link>
-        <img src={shop_cart} alt="Carrinho" className="carrinho" />
+
+        <Link to={"/carempty"}>
+          <img src={shop_cart} alt="Carrinho" className="carrinho" />
+        </Link>
       </div>
     </header>
   );

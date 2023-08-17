@@ -1,0 +1,69 @@
+.container-principal {
+  display: flex;
+  flex-direction: row;
+  height: 55%;
+
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(#081720, #081720) padding-box,
+    linear-gradient(to right, #0075b8e5, #ffdd00) border-box;
+
+  border-radius: 10px;
+  border: 2px solid transparent;
+
+  overflow: hidden;
+  margin-top: 50px;
+  padding: 0 20px;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container-dentro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+
+  color: #fff;
+  font-size: 24px;
+}
+
+.container-btn {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carrinho-vazio {
+  width: 35%;
+}
+
+.btn-voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 49%;
+  height: 38px;
+
+  background-color: #ffd800;
+  color: black;
+  border-radius: 5px;
+
+  text-decoration: none;
+}
+
+.btn-voltar-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 49%;
+  height: 38px;
+
+  background-color: #fff;
+  color: black;
+  border-radius: 5px;
+
+  text-decoration: none;
+}

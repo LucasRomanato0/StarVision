@@ -21,7 +21,7 @@ function Login() {
 
       if (response.status === 200) {
         console.log("usuario logado");
-        navigate("/aboutus");
+        navigate("/categoria");
       }
     } catch (error) {
       console.log("Erro ao logar o usuario: ", error);
@@ -67,7 +67,7 @@ function Login() {
 
             {/* botao login */}
             <div className="container-login-form-btn">
-              <Link to={"/aboutus"} className="login-form-btn">
+              <Link to={"/categoria"} className="login-form-btn">
                 Login
               </Link>
               {/* <button className="login-form-btn" type="submit">

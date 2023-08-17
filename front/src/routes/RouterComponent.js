@@ -8,6 +8,7 @@ import Aplicativo from "../pages/Aplicativo/Aplicativo";
 import Suporte from "../pages/Suporte/Suporte";
 import Produtos from "../pages/Produtos/Produtos";
 import Acessorios from "../pages/Produtos/Acessorios";
+import CarrinhoVazio from "../pages/Carrinho/CarrinhoVazio";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/acessorios",
     element: <Acessorios />,
+  },
+  {
+    path: "/carempty",
+    element: <CarrinhoVazio />,
   },
 ]);
 
