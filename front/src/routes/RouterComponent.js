@@ -3,9 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "../pages/Login/Login";
 import Cadastro from "../pages/Cadastro/Cadastro";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import Produtos from "../pages/Produtos/Produtos";
+import Categoria from "../pages/Produtos/Categoria";
 import Aplicativo from "../pages/Aplicativo/Aplicativo";
 import Suporte from "../pages/Suporte/Suporte";
+import Produtos from "../pages/Produtos/Produtos";
+import Acessorios from "../pages/Produtos/Acessorios";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +27,8 @@ const router = createBrowserRouter([
     element: <AboutUs />,
   },
   {
-    path: "/produtos",
-    element: <Produtos />,
+    path: "/categoria",
+    element: <Categoria />,
   },
   {
     path: "/app",
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
   {
     path: "/suport",
     element: <Suporte />,
+  },
+  {
+    path: "/produtos",
+    element: <Produtos />,
+  },
+  {
+    path: "/acessorios",
+    element: <Acessorios />,
   },
 ]);
 

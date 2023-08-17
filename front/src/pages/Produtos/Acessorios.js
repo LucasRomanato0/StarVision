@@ -1,53 +1,53 @@
 import NavBar from "../../components/NavBar";
 import { Link } from "react-router-dom";
 
-import r2d2_cor from "../../assets/r2d2_cor.png";
-import bb8 from "../../assets/bb8.png";
-import d0 from "../../assets/d0.png";
+import pneu from "../../assets/pneu.png";
+import suporte from "../../assets/suporte.png";
+import controle from "../../assets/controle.png";
 
 import "./produtos.css";
 
-function Produtos() {
+function Acessorios() {
   return (
     <div>
       <NavBar />
       <div className="corpo-produtos">
-        <h1 className="h1-droids">Droids:</h1>
+        <h1 className="h1-droids">Acessórios:</h1>
 
         <div className="row-produtos">
           <div className="column-produto">
             <Link to={"/"} className="btn-produto">
-              <img src={r2d2_cor} alt="R2D2" />
+              <img src={pneu} alt="Pneu" />
             </Link>
 
             <div className="container-p">
-              <p className="nome-produto">Droid R2D2 padrão</p>
+              <p className="nome-produto">Rodas extras R2D2 padrão</p>
               <p className="nome-empresa">StarVision LTDA</p>
-              <p className="preco">R$ 399,99</p>
+              <p className="preco">R$ 59,99 cada</p>
             </div>
           </div>
 
           <div className="column-produto">
             <Link to={"/"} className="btn-produto">
-              <img src={bb8} alt="BB-8" />
+              <img src={suporte} alt="Suporte" />
             </Link>
 
             <div className="container-p">
-              <p className="nome-produto">Droid BB-8 padrão</p>
+              <p className="nome-produto">Suporte para carregar o Dr...</p>
               <p className="nome-empresa">StarVision LTDA</p>
-              <p className="preco">R$ 299,99</p>
+              <p className="preco">R$ 100,00</p>
             </div>
           </div>
 
           <div className="column-produto">
             <Link to={"/"} className="btn-produto">
-              <img src={d0} alt="D-0" />
+              <img src={controle} alt="Controle" />
             </Link>
 
             <div className="container-p">
-              <p className="nome-produto">Droid D-0 padrão</p>
+              <p className="nome-produto">Controle de movimento te...</p>
               <p className="nome-empresa">StarVision LTDA</p>
-              <p className="preco">R$ 189,99</p>
+              <p className="preco">R$ 169,99</p>
             </div>
           </div>
         </div>
@@ -56,4 +56,4 @@ function Produtos() {
   );
 }
 
-export default Produtos;
+export default Acessorios;

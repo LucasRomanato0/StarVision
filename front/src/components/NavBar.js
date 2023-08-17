@@ -17,7 +17,7 @@ export default function NavBar() {
         <Link className="aboutus" to="/aboutus">
           Sobre nós
         </Link>
-        <Link className="produtos" to="/produtos">
+        <Link className="produtos" to="/categoria">
           Produtos
         </Link>
         <Link className="aplicativo" to="/app">

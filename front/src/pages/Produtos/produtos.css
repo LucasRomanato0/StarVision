@@ -1,0 +1,143 @@
+.corpo {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+
+  background-color: #0a1014;
+}
+
+.h1-produtos {
+  color: #fff;
+
+  font-size: 37px;
+
+  padding-top: 90px;
+  padding-bottom: 30px;
+}
+
+.row-categorias {
+  /* background-color: red; */
+  width: 50%;
+  align-items: center;
+  justify-content: space-around;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.categoria-btn {
+  display: flex;
+  background-color: #c5b761;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 200px;
+}
+
+.produtos-img {
+  width: 250px;
+
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+
+.acessorios-img {
+  margin-right: 25px;
+}
+
+.row-categorias-p {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  align-items: center;
+  color: #fff;
+
+  width: 50%;
+  font-size: 25px;
+
+  padding-top: 20px;
+}
+
+.p-categoria {
+  margin-inline: 130px;
+}
+
+.corpo-produtos {
+  height: 100vh;
+  width: 100%;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #0a1014;
+}
+
+.h1-droids {
+  color: #fff;
+}
+
+.row-produtos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+}
+
+.column-produto {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.btn-produto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#081720, #081720) padding-box,
+    linear-gradient(to right, #0075b8e5, #ffdd00) border-box;
+
+  border-radius: 10px;
+  border: 2px solid transparent;
+  width: 342px;
+  height: 349px;
+
+  overflow: hidden;
+  margin-top: 40px;
+  margin-bottom: 10px;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container-p {
+  height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.nome-produto {
+  color: #fff;
+  font-size: 24px;
+}
+
+.nome-empresa {
+  color: #bdb4b4;
+}
+
+.preco {
+  color: #fff;
+  font-size: 30px;
+}
