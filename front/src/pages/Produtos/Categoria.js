@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 
 import r2d2 from "../../assets/r2d2.png";
 import acessorio from "../../assets/acessorio.png";

@@ -9,6 +9,7 @@ import Suporte from "../pages/Suporte/Suporte";
 import Produtos from "../pages/Produtos/Produtos";
 import Acessorios from "../pages/Produtos/Acessorios";
 import CarrinhoVazio from "../pages/Carrinho/CarrinhoVazio";
+import Carrinho from "../pages/Carrinho/Carrinho";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/carempty",
     element: <CarrinhoVazio />,
+  },
+  {
+    path: "/car",
+    element: <Carrinho />,
   },
 ]);
 

@@ -1,4 +1,4 @@
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 
 import r2d2_cor from "../../assets/r2d2_cor.png";
@@ -16,7 +16,7 @@ function Produtos() {
 
         <div className="row-produtos">
           <div className="column-produto">
-            <Link to={"/"} className="btn-produto">
+            <Link to={"/car"} className="btn-produto">
               <img src={r2d2_cor} alt="R2D2" />
             </Link>
 
@@ -28,7 +28,7 @@ function Produtos() {
           </div>
 
           <div className="column-produto">
-            <Link to={"/"} className="btn-produto">
+            <Link to={"/car"} className="btn-produto">
               <img src={bb8} alt="BB-8" />
             </Link>
 
@@ -40,7 +40,7 @@ function Produtos() {
           </div>
 
           <div className="column-produto">
-            <Link to={"/"} className="btn-produto">
+            <Link to={"/car"} className="btn-produto">
               <img src={d0} alt="D-0" />
             </Link>
 

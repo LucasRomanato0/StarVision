@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import logo from "../assets/logo.png";
-import shop_cart from "../assets/shop_cart.png";
-import lupa from "../assets/lupa.png";
+import logo from "../../assets/logo.png";
+import shop_cart from "../../assets/shop_cart.png";
+import lupa from "../../assets/lupa.png";
 
 export default function NavBar() {
   return (

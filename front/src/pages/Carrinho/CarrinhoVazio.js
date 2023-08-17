@@ -1,4 +1,4 @@
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 
 import carrinho_vazio from "../../assets/carrinho_vazio.png";
 import { Link } from "react-router-dom";
