@@ -7,7 +7,34 @@ import d0 from "../../assets/d0.png";
 import suporte from "../../assets/suporte.png";
 import pneu from "../../assets/pneu.png";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 function Carrinho() {
+  const [id, setId] = useState();
+  const [nome, setNome] = useState("");
+  const [desc, setDesc] = useState("");
+  const [preco, setPreco] = useState("");
+  const [img, setImg] = useState("");
+  const [qtd, setQtd] = useState();
+
+  useEffect(() => {
+    async function loadCart() {
+      const response = await axios.get("http://localhost:3030/cart");
+
+      console.log(response);
+
+      setId(response.data[0].product[0].id);
+      setNome(response.data[0].product[0].name);
+      setDesc(response.data[0].product[0].description);
+      setPreco(response.data[0].product[0].price);
+      setImg(response.data[0].product[0].photo);
+      setQtd(response.data[0].qtd);
+    }
+
+    loadCart();
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -20,19 +47,19 @@ function Carrinho() {
 
           {/* "Generico" */}
           <ContainerCompra
+            src={r2d2_cor}
+            titulo={nome}
+            preco={preco}
+            p={"em até 7x de R$71,43 sem juros"}
+            amarelo={"Estimativa de envio de 4 a 5 dias."}
+            qtd={qtd}
+          />
+
+          <ContainerCompra
             src={d0}
             titulo={"Droid D-0 desgastado"}
             preco={"R$189,99"}
             p={"em até 3x de R$63,33 sem juros"}
-            amarelo={"Estimativa de envio de 4 a 5 dias."}
-            qtd={"1"}
-          />
-
-          <ContainerCompra
-            src={r2d2_cor}
-            titulo={"Droid R2D2 padrão"}
-            preco={"R$499,99"}
-            p={"em até 7x de R$71,43 sem juros"}
             amarelo={"Estimativa de envio de 4 a 5 dias."}
             qtd={"1"}
           />

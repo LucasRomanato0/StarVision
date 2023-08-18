@@ -30,6 +30,28 @@ function Produtos() {
     loadProducts();
   }, []);
 
+  const addToCart = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3030/cart", {
+        id: id,
+      });
+
+      if (response.status === 201) {
+        window.alert("Produto adicionado ao carrinho!");
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        window.alert("Bad request");
+      } else if (error.response.status === 404) {
+        window.alert("Produto não encontrado!");
+      } else {
+        window.alert("Erro de api.");
+      }
+    }
+  };
+
   return (
     <div>
       <NavBar />
@@ -38,9 +60,12 @@ function Produtos() {
 
         <div className="row-produtos">
           <div className="column-produto">
-            <Link to={"/car"} className="btn-produto">
+            <button className="btn-produto" onClick={addToCart}>
               <img src={r2d2_cor} alt="R2D2" />
-            </Link>
+            </button>
+            {/* <Link to={"/car"} className="btn-produto">
+              <img src={r2d2_cor} alt="R2D2" />
+            </Link> */}
 
             <div className="container-p">
               <p className="nome-produto">{nome}</p>
