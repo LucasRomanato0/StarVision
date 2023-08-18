@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./cadastro.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 function Cadastro() {
   const [username, setUsername] = useState("");
@@ -8,12 +10,38 @@ function Cadastro() {
   const [telefone, setTelefone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3005/cadastro", {
+        login: username,
+        email: email,
+        phone: telefone,
+        password: password,
+      });
+
+      console.log(response.data);
+
+      if (response.status === 201) {
+        console.log("usuario criado com sucesso");
+        navigate("/login");
+      } else if (response.status === 403) {
+        window.alert("Usuário já existente.");
+      }
+    } catch (error) {
+      window.alert("Erro ao cadastrar.");
+      console.log("Erro ao logar o usuario: " + error);
+    }
+  };
 
   return (
     <div className="container">
       <div className="container-login">
         <div className="wrap-login">
-          <form className="form-login">
+          <form className="form-login" onSubmit={handleRegister}>
             {/* parte de cima */}
             <span className="login-form-title">Faça seu cadastro!</span>
             <hr className="hr-lightsaber" />
@@ -84,9 +112,12 @@ function Cadastro() {
 
             {/* botao cadastre-se */}
             <div className="container-login-form-btn">
-              <Link to={"/aboutus"} className="login-form-btn">
+              {/* <Link to={"/aboutus"} className="login-form-btn">
                 Cadastre-se
-              </Link>
+              </Link> */}
+              <button type="submit" className="login-form-btn">
+                Cadastre-se
+              </button>
             </div>
           </form>
         </div>

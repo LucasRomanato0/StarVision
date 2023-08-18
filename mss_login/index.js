@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 
 const app = express();
 app.use(express.json());
@@ -48,13 +49,13 @@ app.post("/login", checkLoginOrPassword, (req, res) => {
     );
 
     if (!found) {
-      res.status(402).json({ message: "Login or password invalid" });
+      res.status(402).send("Login or password invalid");
     } else {
-      res.status(200).json({ message: "Login succeeded" });
+      res.status(200).send("Login succeeded");
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).send("Internal Server Error");
   }
 });
 

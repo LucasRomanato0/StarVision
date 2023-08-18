@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  async function handleLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
@@ -19,14 +19,18 @@ function Login() {
         password,
       });
 
+      console.log(response.data);
+
+      // data == "Login succeeded"
       if (response.status === 200) {
         console.log("usuario logado");
         navigate("/categoria");
       }
     } catch (error) {
-      console.log("Erro ao logar o usuario: ", error);
+      window.alert("Login ou senha errados.");
+      console.log("Erro ao logar o usuario.");
     }
-  }
+  };
 
   return (
     <div className="container">
@@ -62,17 +66,17 @@ function Login() {
             </div>
 
             <div className="ancora-senha">
-              <a href="">Esqueci minha senha</a>
+              <a href="#">Esqueci minha senha</a>
             </div>
 
             {/* botao login */}
             <div className="container-login-form-btn">
-              <Link to={"/categoria"} className="login-form-btn">
+              {/* <Link to={"/categoria"} className="login-form-btn">
                 Login
-              </Link>
-              {/* <button className="login-form-btn" type="submit">
+              </Link> */}
+              <button type="submit" className="login-form-btn">
                 Login
-              </button> */}
+              </button>
             </div>
 
             {/* cadastre-se */}
