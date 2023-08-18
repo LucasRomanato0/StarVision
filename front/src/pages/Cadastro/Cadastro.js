@@ -28,11 +28,15 @@ function Cadastro() {
       if (response.status === 201) {
         console.log("usuario criado com sucesso");
         navigate("/login");
-      } else if (response.status === 403) {
-        window.alert("Usuário já existente.");
       }
     } catch (error) {
-      window.alert("Erro ao cadastrar.");
+      if (error.response.status === 403) {
+        window.alert("Nome de usuário já cadastrado.");
+      } else if (error.response.status === 400) {
+        window.alert("Campos inválidos ou vazios.");
+      } else {
+        window.alert("Erro de api.");
+      }
       console.log("Erro ao logar o usuario: " + error);
     }
   };

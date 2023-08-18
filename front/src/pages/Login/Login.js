@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -15,19 +15,24 @@ function Login() {
 
     try {
       const response = await axios.post("http://localhost:3005/login", {
-        email,
-        password,
+        login: login,
+        password: password,
       });
 
       console.log(response.data);
 
-      // data == "Login succeeded"
       if (response.status === 200) {
         console.log("usuario logado");
         navigate("/categoria");
       }
     } catch (error) {
-      window.alert("Login ou senha errados.");
+      if (error.response.status === 402) {
+        window.alert("Login ou senha errados.");
+      } else if (error.response.status === 400) {
+        window.alert("Campos inválidos ou vazios.");
+      } else {
+        window.alert("Erro de api.");
+      }
       console.log("Erro ao logar o usuario.");
     }
   };
@@ -46,12 +51,12 @@ function Login() {
             {/* input email */}
             <div className="wrap-input">
               <input
-                className={email !== "" ? "has-val input" : "input"}
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                className={login !== "" ? "has-val input" : "input"}
+                type="text"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
               />
-              <span className="focus-input" data-placeholder="Email"></span>
+              <span className="focus-input" data-placeholder="Username"></span>
             </div>
 
             {/* input senha */}
