@@ -4,7 +4,15 @@ const Product = require("../entities/Product");
 class ProductRepository extends IProductRepository {
   constructor() {
     super();
-    this.products = []; //mock
+    this.products = [
+      new Product({
+        id: 1,
+        name: "Droid R2D2 padrão",
+        description: "StarVision LTDA",
+        price: "R$399,99",
+        photo: "../../assets/r2d2_cor.png",
+      }),
+    ]; //mock
   }
 
   //Create

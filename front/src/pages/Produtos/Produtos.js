@@ -6,8 +6,30 @@ import bb8 from "../../assets/bb8.png";
 import d0 from "../../assets/d0.png";
 
 import "./produtos.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Produtos() {
+  const [id, setId] = useState();
+  const [nome, setNome] = useState("");
+  const [desc, setDesc] = useState("");
+  const [preco, setPreco] = useState("");
+  const [img, setImg] = useState("");
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await axios.get("http://localhost:3030/products");
+
+      setId(response.data[0].id);
+      setNome(response.data[0].name);
+      setDesc(response.data[0].description);
+      setPreco(response.data[0].price);
+      setImg(response.data[0].photo);
+    }
+
+    loadProducts();
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -21,9 +43,9 @@ function Produtos() {
             </Link>
 
             <div className="container-p">
-              <p className="nome-produto">Droid R2D2 padrão</p>
-              <p className="nome-empresa">StarVision LTDA</p>
-              <p className="preco">R$ 399,99</p>
+              <p className="nome-produto">{nome}</p>
+              <p className="nome-empresa">{desc}</p>
+              <p className="preco">{preco}</p>
             </div>
           </div>
 

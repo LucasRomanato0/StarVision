@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 
 import r2d2 from "../../assets/r2d2.png";

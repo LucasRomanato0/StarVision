@@ -3,6 +3,11 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+const cors = require("cors");
+app.use(cors());
+
+const axios = require("axios");
+
 const port = process.env.PORT || 3030;
 
 const ProductRepository = require("./repositories/ProductRepository");
