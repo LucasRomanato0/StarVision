@@ -190,4 +190,10 @@ app.delete("/cart", async (req, res) => {
   }
 });
 
+app.post("/events", (req, res) => {
+  const event = req.body;
+
+  res.status(200).json({ message: "ok" });
+});
+
 app.listen(port, () => console.log(`Listening to port ${port}`));

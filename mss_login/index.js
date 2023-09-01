@@ -8,6 +8,9 @@ app.use(cors());
 
 const axios = require("axios");
 
+const port = process.env.PORT || 3005;
+const barramentoPort = process.env.PORT || 3100;
+
 const users = [];
 
 function checkLoginOrPassword(req, res, next) {
@@ -18,7 +21,7 @@ function checkLoginOrPassword(req, res, next) {
   return next();
 }
 
-app.post("/cadastro", checkLoginOrPassword, (req, res) => {
+app.post("/cadastro", checkLoginOrPassword, async (req, res) => {
   try {
     const { login, email, phone, password } = req.body;
     const newUser = {
@@ -34,6 +37,13 @@ app.post("/cadastro", checkLoginOrPassword, (req, res) => {
       console.log("user criado");
 
       res.status(201).json({ message: `User '${login}' created` });
+
+      await axios.post(`http://localhost:${barramentoPort}/events`, {
+        type: "cadastroUsuario",
+        data: {
+          user: newUser,
+        },
+      });
     } else {
       res.status(403).json({
         message: `User '${login} already exists'`,
@@ -45,7 +55,7 @@ app.post("/cadastro", checkLoginOrPassword, (req, res) => {
   }
 });
 
-app.post("/login", checkLoginOrPassword, (req, res) => {
+app.post("/login", checkLoginOrPassword, async (req, res) => {
   try {
     const { login, password } = req.body;
     const found = users.find(
@@ -56,6 +66,12 @@ app.post("/login", checkLoginOrPassword, (req, res) => {
       res.status(402).send("Login or password invalid");
     } else {
       res.status(200).send("Login succeeded");
+      await axios.post(`http://localhost:${barramentoPort}/events`, {
+        type: "loginUsuario",
+        data: {
+          user: found,
+        },
+      });
     }
   } catch (error) {
     console.log(error);
@@ -116,4 +132,10 @@ app.delete("/delete-user", (req, res) => {
   }
 });
 
-app.listen(3005);
+app.post("/events", (req, res) => {
+  const event = req.body;
+
+  res.status(200).json({ message: "ok" });
+});
+
+app.listen(port, () => console.log(`Listening to port ${port}`));
