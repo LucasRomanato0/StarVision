@@ -39,7 +39,7 @@ export default function NavBar() {
           Login
         </Link>
 
-        <Link to={"/carempty"}>
+        <Link to={"/car"}>
           <img src={shop_cart} alt="Carrinho" className="carrinho" />
         </Link>
       </div>
