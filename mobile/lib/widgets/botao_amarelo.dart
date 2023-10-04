@@ -17,7 +17,7 @@ class BotaoAmarelo extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.4,
+        width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: 5),
         alignment: Alignment.center,
         child: Text(
