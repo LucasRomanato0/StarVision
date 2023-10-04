@@ -61,7 +61,12 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.forgotPassword,
+                      );
+                    },
                     child: const Text(
                       "Esqueci minha senha",
                       style: TextStyle(

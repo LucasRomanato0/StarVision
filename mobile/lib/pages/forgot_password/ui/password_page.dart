@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/widgets/container_principal.dart';
 import 'package:mobile/widgets/text_field_widget.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class PasswordPage extends StatelessWidget {
+  const PasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +18,8 @@ class RegisterPage extends StatelessWidget {
             loginOrRegister: 1,
             children: [
               const Text(
-                "Faça seu cadastro!",
-                style: TextStyle(color: Colors.white, fontSize: 32),
+                "Esqueceu sua senha?",
+                style: TextStyle(color: Colors.white, fontSize: 30),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 25, top: 8),
@@ -35,19 +33,11 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
               const TextFieldWidget(
-                labelText: 'Escolha um nome de usuário',
-                hintText: 'usename',
-              ),
-              const TextFieldWidget(
-                labelText: 'Email',
+                labelText: 'Email cadastrado',
                 hintText: 'teste@email.com',
               ),
               const TextFieldWidget(
-                labelText: 'Telefone',
-                hintText: '(xx) 99999-9999',
-              ),
-              const TextFieldWidget(
-                labelText: 'Digite uma senha',
+                labelText: 'Nova senha',
                 hintText: '***********',
                 obscureText: true,
               ),
@@ -65,7 +55,7 @@ class RegisterPage extends StatelessWidget {
                       AppRoutes.login,
                     );
                   },
-                  text: 'Cadastre-se',
+                  text: 'Confirmar',
                 ),
               ),
             ],
