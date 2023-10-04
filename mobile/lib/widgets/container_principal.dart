@@ -15,8 +15,6 @@ class ContainerPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = 'assets/images/logo.png';
-
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       // height: 500,
@@ -35,24 +33,6 @@ class ContainerPrincipal extends StatelessWidget {
       child: loginOrRegister == 1
           ? Column(
               children: [
-                const Text(
-                  "Bem Vindo!",
-                  style: TextStyle(color: Colors.white, fontSize: 32),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Container(
-                    // alignment: Alignment.topCenter,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(imagePath),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
                 ...children!,
               ],
             )
