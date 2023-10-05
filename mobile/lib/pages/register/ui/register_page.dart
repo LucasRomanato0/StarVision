@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
@@ -42,9 +43,10 @@ class RegisterPage extends StatelessWidget {
                 labelText: 'Email',
                 hintText: 'teste@email.com',
               ),
-              const TextFieldWidget(
+              TextFieldWidget(
                 labelText: 'Telefone',
                 hintText: '(xx) 99999-9999',
+                inputFormatters: [MaskedInputFormatter('(##) #####-####')],
               ),
               const TextFieldWidget(
                 labelText: 'Digite uma senha',
