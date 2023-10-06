@@ -17,6 +17,6 @@ Os comandos principais.
 - npm start
 
 # PARTE 2 🧩
-Os scripts do container Docker estão disponíveis no seguinte caminho: [../back/mss_login/](back/mss_login/README.md)
+Os scripts do container Docker estão disponíveis no seguinte caminho: [../back/mss_login/](back/mss_login)
 
 
