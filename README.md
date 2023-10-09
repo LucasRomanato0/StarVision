@@ -19,7 +19,7 @@ Os comandos principais.
 # PARTE 2 🧩
 ## Os scripts do container Docker estão disponíveis no seguintes caminhos:
 - [../back/mss_login/](back/mss_login)
-- [../back/mss_login/](back/barramento_eventos)
-- [../back/mss_login/](back/mss_produto)
+- [../back/barramento_eventos/](back/barramento_eventos)
+- [../back/mss_produto/](back/mss_produto)
 
 
