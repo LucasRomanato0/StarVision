@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/app_routes.dart';
+import 'package:mobile/pages/bottom_bar/ui/bottom_navigation_bar.dart';
 import 'package:mobile/pages/forgot_password/ui/password_page.dart';
 import 'package:mobile/pages/login/ui/login_page.dart';
 import 'package:mobile/pages/register/ui/register_page.dart';
@@ -21,5 +22,11 @@ Map<String, dynamic> routerApp(RouteSettings settings) => {
       AppRoutes.forgotPassword: MaterialPageRoute(
         settings: settings,
         builder: (context) => const PasswordPage(),
+      ),
+
+      //NavigationBar
+      AppRoutes.navigationBar: MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const BottomNavigationBarPage(),
       ),
     };

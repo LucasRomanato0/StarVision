@@ -80,7 +80,12 @@ class LoginPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 60),
                 child: BotaoAmarelo(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.navigationBar,
+                    );
+                  },
                   text: 'Login',
                 ),
               ),
