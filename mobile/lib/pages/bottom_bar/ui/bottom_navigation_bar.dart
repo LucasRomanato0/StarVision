@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/pages/produtos/produtos_page.dart';
 import 'package:mobile/shared/app_colors.dart';
 
 class BottomNavigationBarPage extends StatefulWidget {
@@ -12,9 +13,7 @@ class BottomNavigationBarPage extends StatefulWidget {
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
   int currentIndex = 0;
   final screens = [
-    Scaffold(
-      backgroundColor: Colors.red,
-    ),
+    const ProdutosPage(),
     Scaffold(
       backgroundColor: Colors.black,
     ),
@@ -32,7 +31,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
       body: screens[currentIndex],
       extendBody: false,
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.azulBorda,
+        selectedItemColor: AppColors.amarelo,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
         type: BottomNavigationBarType.shifting,

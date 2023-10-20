@@ -4,4 +4,5 @@ class AppRoutes {
   static String get forgotPassword => '/forgotPassword';
 
   static String get navigationBar => '/navigationBar';
+  static String get produtos => '/produtos';
 }
