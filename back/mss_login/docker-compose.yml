@@ -4,4 +4,4 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - "3100:3100"
+      - "3005:3005"
