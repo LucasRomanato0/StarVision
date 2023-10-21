@@ -25,6 +25,10 @@ Os comandos principais.
 ## Os scripts da implementação do Kubernetes estão disponíveis no seguinte caminho:
 - [../back/kubernetes](back/kubernetes)
 
+# Docker 🐳
+## No VSCode:
+Para criar um container docker basta entrar no arquivo "docker-compose.yml" de cada mss, clicar com o botão direito e selecionar Compose Up
+
 # Kubernetes ☁️
 ## Comandos para criar e visualizar (com kubectl):
 - kubectl create -f file_name
