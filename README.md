@@ -22,4 +22,11 @@ Os comandos principais.
 - [../back/barramento_eventos/](back/barramento_eventos)
 - [../back/mss_produto/](back/mss_produto)
 
+## Os scripts da implementação do Kubernetes estão disponíveis no seguinte caminho:
+- [../back/kubernetes](back/kubernetes)
+
+# Kubernetes
+## Comandos para criar e visualizar (com kubectl):
+- kubectl create -f file_name
+- kubectl get pods
 
