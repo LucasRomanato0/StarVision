@@ -25,7 +25,7 @@ Os comandos principais.
 ## Os scripts da implementação do Kubernetes estão disponíveis no seguinte caminho:
 - [../back/kubernetes](back/kubernetes)
 
-# Kubernetes
+# Kubernetes ☁️
 ## Comandos para criar e visualizar (com kubectl):
 - kubectl create -f file_name
 - kubectl get pods
