@@ -1,6 +1,6 @@
 version: "3"
 services:
-  mss_login:
+  mss_produto:
     build:
       dockerfile: Dockerfile
     ports:
