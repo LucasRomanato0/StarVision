@@ -13,7 +13,7 @@ class BottomNavigationBarPage extends StatefulWidget {
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
   int currentIndex = 0;
   final screens = [
-    const ProdutosPage(),
+    ProdutosPage(),
     Scaffold(
       backgroundColor: Colors.black,
     ),
