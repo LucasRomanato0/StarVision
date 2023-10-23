@@ -1,12 +1,28 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/widgets/container_principal.dart';
 import 'package:mobile/widgets/text_field_widget.dart';
+import 'package:perfect_volume_control/perfect_volume_control.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final player = AudioCache();
+
+  @override
+  void initState() {
+    super.initState();
+    PerfectVolumeControl.setVolume(0.3);
+    player.play('/songs/imperial_theme.mp3');
+  }
 
   @override
   Widget build(BuildContext context) {
