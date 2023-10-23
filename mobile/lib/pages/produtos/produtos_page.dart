@@ -119,7 +119,14 @@ class _ProdutosPageState extends State<ProdutosPage> {
           ),
         ),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Image.asset('assets/images/tatooine.png'),
+          ),
+        ],
+      ),
     );
   }
 }
