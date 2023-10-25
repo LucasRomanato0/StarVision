@@ -20,8 +20,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    PerfectVolumeControl.setVolume(0.3);
-    // player.play('imperial_theme.mp3');
+    PerfectVolumeControl.setVolume(0.2);
+    player.play('imperial_theme.mp3');
   }
 
   @override

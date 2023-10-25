@@ -21,6 +21,22 @@ dependencies:
   perfect_volume_control: ^1.0.5
   audioplayers: ^0.20.1
   carousel_slider: ^4.2.1
+  flutter_native_splash: ^2.3.4
+  flutter_launcher_icons: ^0.13.1
+
+flutter_native_splash:
+  color: "#081720"
+  image: "assets/app/logo.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "assets/app/logo.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#081720"
+  adaptive_icon_foreground: "assets/app/logo.png"
 
 dev_dependencies:
   flutter_test:
