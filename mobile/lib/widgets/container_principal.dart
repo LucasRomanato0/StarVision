@@ -6,17 +6,19 @@ class ContainerPrincipal extends StatelessWidget {
   final Widget? child;
   final List<Widget>? children;
   final int loginOrRegister;
+  final double? width;
   const ContainerPrincipal({
     super.key,
     this.child,
     required this.loginOrRegister,
     this.children,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: width ?? MediaQuery.of(context).size.width * 0.9,
       // height: 500,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 35),

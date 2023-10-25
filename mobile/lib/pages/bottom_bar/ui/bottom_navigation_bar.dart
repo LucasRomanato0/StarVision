@@ -31,7 +31,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
       body: screens[currentIndex],
       extendBody: false,
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.amarelo,
+        selectedItemColor: AppColors.azulBorda,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
         type: BottomNavigationBarType.shifting,
