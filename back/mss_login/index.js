@@ -65,7 +65,7 @@ app.post("/login", checkLoginOrPassword, async (req, res) => {
     if (!found) {
       res.status(402).send("Login or password invalid");
     } else {
-      res.status(200).send("Login succeeded");
+      res.status(200).json({ user: found, message: "Login succeeded" });
       await axios.post(`http://localhost:${barramentoPort}/events`, {
         type: "loginUsuario",
         data: {
