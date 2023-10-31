@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile/pages/login/domain/entities/user_entity.dart';
-import 'package:mobile/pages/login/domain/repositories/login_repository.dart';
+import 'package:mobile/pages/login/domain/repositories/user_repository.dart';
 
 abstract class LoginUsecase {
   Future<Either<Exception, UserEntity>> call(String login, String senha);
 }
 
 class LoginUsecaseImpl extends LoginUsecase {
-  LoginRepository repo;
+  UserRepository repo;
   LoginUsecaseImpl(this.repo);
 
   @override
