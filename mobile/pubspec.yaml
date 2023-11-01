@@ -1,0 +1,57 @@
+name: mobile
+description: A new Flutter project.
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  web_socket_channel: ^2.2.0
+  path_provider: ^2.0.11
+  provider: ^6.0.3
+  cupertino_icons: ^1.0.2
+  gradient_borders: ^1.0.0
+  flutter_session_manager: ^1.0.3
+  flutter_multi_formatter: ^2.11.11
+  perfect_volume_control: ^1.0.5
+  audioplayers: ^0.20.1
+  carousel_slider: ^4.2.1
+  flutter_native_splash: ^2.3.4
+  flutter_launcher_icons: ^0.13.1
+  dartz: ^0.10.1
+  mobx: ^2.1.1
+
+flutter_native_splash:
+  color: "#081720"
+  image: "assets/app/logo.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "assets/app/logo.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#081720"
+  adaptive_icon_foreground: "assets/app/logo.png"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  mobx_codegen:
+  json_serializable:
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/
