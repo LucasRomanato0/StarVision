@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/bottom_bar/ui/bottom_navigation_bar.dart';
 import 'package:mobile/pages/forgot_password/ui/password_page.dart';
-import 'package:mobile/pages/login/ui/login_page.dart';
+import 'package:mobile/pages/login/ui/pages/login_page.dart';
 import 'package:mobile/pages/produtos/produtos_page.dart';
 import 'package:mobile/pages/register/ui/register_page.dart';
 

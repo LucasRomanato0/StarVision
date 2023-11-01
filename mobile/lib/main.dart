@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mobile/app_navigation.dart';
 import 'package:mobile/app_routes.dart';
-import 'package:mobile/pages/login/ui/login_page.dart';
+import 'package:mobile/pages/login/ui/pages/login_page.dart';
 import 'package:mobile/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 

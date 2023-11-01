@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/app_routes.dart';
+import 'package:mobile/pages/login/ui/controllers/login_controller.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/widgets/container_principal.dart';
@@ -16,6 +17,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final player = AudioCache();
+  late final LoginController controller;
+
+  final TextEditingController controllerEmail = TextEditingController();
+  final TextEditingController controllerPassword = TextEditingController();
 
   @override
   void initState() {
@@ -53,25 +58,29 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 25, bottom: 10),
+              Padding(
+                padding: const EdgeInsets.only(top: 25, bottom: 10),
                 child: TextFieldWidget(
+                  controller: controllerEmail,
                   hintText: 'email@teste.com',
                   labelText: 'Email',
-                  suffixIcon: Icon(
+                  suffixIcon: const Icon(
                     Icons.email,
                     color: Colors.white,
                   ),
+                  onSubmitted: controller.setEmail(controllerEmail.text),
                 ),
               ),
-              const TextFieldWidget(
+              TextFieldWidget(
+                controller: controllerPassword,
                 hintText: '*******',
                 labelText: 'Senha',
                 obscureText: true,
-                suffixIcon: Icon(
+                suffixIcon: const Icon(
                   Icons.lock,
                   color: Colors.white,
                 ),
+                onSubmitted: controller.setPassword(controllerPassword.text),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

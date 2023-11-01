@@ -9,6 +9,8 @@ class TextFieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController? controller;
+  final Function(String)? onSubmitted;
   const TextFieldWidget({
     super.key,
     required this.labelText,
@@ -17,11 +19,14 @@ class TextFieldWidget extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.inputFormatters,
+    this.controller,
+    this.onSubmitted,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText ?? false,
       inputFormatters: inputFormatters,
@@ -49,6 +54,7 @@ class TextFieldWidget extends StatelessWidget {
           ),
         ),
       ),
+      onSubmitted: onSubmitted,
     );
   }
 }
