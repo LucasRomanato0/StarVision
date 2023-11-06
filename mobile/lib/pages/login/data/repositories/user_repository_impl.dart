@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile/pages/register/data/datasources/cadastro_datasource.dart';
 import 'package:mobile/pages/login/data/datasources/login_datasource.dart';
-import 'package:mobile/pages/login/domain/entities/user_entity.dart';
 import 'package:mobile/pages/login/domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -10,7 +9,7 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.loginDatasource, this.cadastroDatasource);
 
   @override
-  Future<Either<Exception, UserEntity>> login({
+  Future<Either<Exception, int>> login({
     required String login,
     required String senha,
   }) async {
@@ -23,7 +22,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<Exception, UserEntity>> cadastro({
+  Future<Either<Exception, int>> cadastro({
     required String login,
     required String email,
     required String phone,

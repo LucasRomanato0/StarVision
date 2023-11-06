@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:mobile/pages/login/domain/entities/user_entity.dart';
 import 'package:mobile/pages/login/domain/repositories/user_repository.dart';
 
 abstract class CadastroUsecase {
-  Future<Either<Exception, UserEntity>> call(
+  Future<Either<Exception, int>> call(
     String login,
     String email,
     String phone,
@@ -16,7 +15,7 @@ class CadastroUsecaseImpl extends CadastroUsecase {
   CadastroUsecaseImpl(this.repo);
 
   @override
-  Future<Either<Exception, UserEntity>> call(
+  Future<Either<Exception, int>> call(
     String login,
     String email,
     String phone,
