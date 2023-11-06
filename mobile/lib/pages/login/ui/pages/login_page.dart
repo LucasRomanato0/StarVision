@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/login/ui/controllers/login_controller.dart';
 import 'package:mobile/shared/app_colors.dart';
@@ -17,7 +20,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final player = AudioCache();
-  late final LoginController controller;
+  late LoginController controller;
 
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
@@ -25,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    controller = GetIt.I.get();
     PerfectVolumeControl.setVolume(0.2);
     player.play('imperial_theme.mp3');
   }
@@ -105,11 +109,14 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 60),
                 child: BotaoAmarelo(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.navigationBar,
-                    );
+                  onPressed: () async {
+                    await controller.onSubmitted();
+                    if (controller.status == 200) {
+                      Navigator.pushNamed(
+                        context,
+                        AppRoutes.navigationBar,
+                      );
+                    }
                   },
                   text: 'Login',
                 ),
