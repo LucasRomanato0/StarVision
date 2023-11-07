@@ -14,7 +14,7 @@ class RegisterDatasourceImpl implements RegisterDatasource {
   }) async {
     try {
       var response = await _dio.post(
-        'http://localhost:3005/cadastro',
+        'http://172.29.48.1:3005/cadastro', // colocar o ip da maquina
         data: {
           login: login,
           email: email,
@@ -23,13 +23,17 @@ class RegisterDatasourceImpl implements RegisterDatasource {
         },
       );
 
-      if (response.statusCode.toString() == '200') {
+      if (response.statusCode.toString() == '201') {
         return response.statusCode!;
       } else {
         throw Exception("Erro no processamento - ${response.statusCode}");
       }
     } catch (e) {
       print(e);
+
+      if (e is DioException) {
+        return e.response!.statusCode!;
+      }
 
       throw Exception('Erro no dio - $e');
     }
