@@ -26,7 +26,7 @@ abstract class _LoginController with Store {
     var result = await usecase(email, password);
 
     return result.fold(
-      (l) => null,
+      (l) => status = 500,
       (r) => status = r,
     );
   }

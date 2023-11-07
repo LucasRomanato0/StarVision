@@ -8,7 +8,7 @@ class LoginDatasourceImpl implements LoginDatasource {
   Future<int> login({required String login, required String senha}) async {
     try {
       var response = await _dio.post(
-        'http://localhost:3005/login',
+        'http://172.29.48.1:3005/login', // colocar o ip da maquina
         data: {
           'login': login,
           'password': senha,
@@ -16,6 +16,8 @@ class LoginDatasourceImpl implements LoginDatasource {
       );
 
       if (response.statusCode.toString() == '200') {
+        return response.statusCode!;
+      } else if (response.statusCode.toString() == '402') {
         return response.statusCode!;
       } else {
         throw Exception("Erro no processamento - ${response.statusCode}");

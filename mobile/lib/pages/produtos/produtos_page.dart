@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/app_routes.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/carousel_item.dart';
 import 'package:mobile/widgets/text_field_appbar.dart';
@@ -81,7 +82,9 @@ class _ProdutosPageState extends State<ProdutosPage> {
                       width: MediaQuery.of(context).size.width * 0.2,
                       height: MediaQuery.of(context).size.height * 0.1,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.login);
+                        },
                         icon: Image.asset(
                           'assets/images/logo.png',
                         ),
