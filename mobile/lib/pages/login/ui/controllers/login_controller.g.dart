@@ -9,58 +9,84 @@ part of 'login_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$LoginController on _LoginController, Store {
-  late final _$emailAtom =
-      Atom(name: '_LoginController.email', context: context);
+  late final _$statusAtom =
+      Atom(name: '_LoginController.status', context: context);
 
   @override
-  String get email {
-    _$emailAtom.reportRead();
-    return super.email;
+  int? get status {
+    _$statusAtom.reportRead();
+    return super.status;
   }
 
   @override
-  set email(String value) {
-    _$emailAtom.reportWrite(value, super.email, () {
-      super.email = value;
+  set status(int? value) {
+    _$statusAtom.reportWrite(value, super.status, () {
+      super.status = value;
     });
   }
 
-  late final _$passwordAtom =
-      Atom(name: '_LoginController.password', context: context);
+  late final _$mensagemAtom =
+      Atom(name: '_LoginController.mensagem', context: context);
 
   @override
-  String get password {
-    _$passwordAtom.reportRead();
-    return super.password;
+  String get mensagem {
+    _$mensagemAtom.reportRead();
+    return super.mensagem;
   }
 
   @override
-  set password(String value) {
-    _$passwordAtom.reportWrite(value, super.password, () {
-      super.password = value;
+  set mensagem(String value) {
+    _$mensagemAtom.reportWrite(value, super.mensagem, () {
+      super.mensagem = value;
     });
+  }
+
+  late final _$mensagemNullAtom =
+      Atom(name: '_LoginController.mensagemNull', context: context);
+
+  @override
+  String get mensagemNull {
+    _$mensagemNullAtom.reportRead();
+    return super.mensagemNull;
+  }
+
+  @override
+  set mensagemNull(String value) {
+    _$mensagemNullAtom.reportWrite(value, super.mensagemNull, () {
+      super.mensagemNull = value;
+    });
+  }
+
+  late final _$onSubmittedAsyncAction =
+      AsyncAction('_LoginController.onSubmitted', context: context);
+
+  @override
+  Future<int?> onSubmitted(
+      {required dynamic email, required dynamic password}) {
+    return _$onSubmittedAsyncAction
+        .run(() => super.onSubmitted(email: email, password: password));
   }
 
   late final _$_LoginControllerActionController =
       ActionController(name: '_LoginController', context: context);
 
   @override
-  dynamic setEmail(String value) {
+  dynamic setMensagem() {
     final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.setEmail');
+        name: '_LoginController.setMensagem');
     try {
-      return super.setEmail(value);
+      return super.setMensagem();
     } finally {
       _$_LoginControllerActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic setPassword(String value) {
+  dynamic setMensagemNull() {
     final _$actionInfo = _$_LoginControllerActionController.startAction(
-        name: '_LoginController.setPassword');
+        name: '_LoginController.setMensagemNull');
     try {
-      return super.setPassword(value);
+      return super.setMensagemNull();
     } finally {
       _$_LoginControllerActionController.endAction(_$actionInfo);
     }
@@ -69,8 +95,9 @@ mixin _$LoginController on _LoginController, Store {
   @override
   String toString() {
     return '''
-email: ${email},
-password: ${password}
+status: ${status},
+mensagem: ${mensagem},
+mensagemNull: ${mensagemNull}
     ''';
   }
 }

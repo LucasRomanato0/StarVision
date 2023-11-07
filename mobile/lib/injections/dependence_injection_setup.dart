@@ -15,7 +15,7 @@ class DependenceInjectionSetup {
 
     // Repositories
     getIt.registerLazySingleton<UserRepository>(
-      () => UserRepositoryImpl(getIt.get(), getIt.get()),
+      () => UserRepositoryImpl(getIt.get()),
     );
 
     // Usecases
