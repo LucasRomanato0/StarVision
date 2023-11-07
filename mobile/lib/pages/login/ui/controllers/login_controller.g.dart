@@ -41,22 +41,6 @@ mixin _$LoginController on _LoginController, Store {
     });
   }
 
-  late final _$mensagemNullAtom =
-      Atom(name: '_LoginController.mensagemNull', context: context);
-
-  @override
-  String get mensagemNull {
-    _$mensagemNullAtom.reportRead();
-    return super.mensagemNull;
-  }
-
-  @override
-  set mensagemNull(String value) {
-    _$mensagemNullAtom.reportWrite(value, super.mensagemNull, () {
-      super.mensagemNull = value;
-    });
-  }
-
   late final _$onSubmittedAsyncAction =
       AsyncAction('_LoginController.onSubmitted', context: context);
 
@@ -96,8 +80,7 @@ mixin _$LoginController on _LoginController, Store {
   String toString() {
     return '''
 status: ${status},
-mensagem: ${mensagem},
-mensagemNull: ${mensagemNull}
+mensagem: ${mensagem}
     ''';
   }
 }

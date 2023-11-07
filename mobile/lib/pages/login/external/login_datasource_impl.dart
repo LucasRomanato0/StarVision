@@ -17,13 +17,15 @@ class LoginDatasourceImpl implements LoginDatasource {
 
       if (response.statusCode.toString() == '200') {
         return response.statusCode!;
-      } else if (response.statusCode.toString() == '402') {
-        return response.statusCode!;
       } else {
         throw Exception("Erro no processamento - ${response.statusCode}");
       }
     } catch (e) {
       print(e);
+
+      if (e is DioException) {
+        return e.response!.statusCode!;
+      }
 
       throw Exception('Erro no dio - $e');
     }

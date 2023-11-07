@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Text(
-                  controller.mensagemNull,
+                  controller.mensagem,
                   style: const TextStyle(color: Colors.red),
                 ),
                 TextFieldWidget(
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   // onSubmitted: controller.setPassword(controllerPassword.text),
                 ),
                 Text(
-                  controller.mensagemNull,
+                  controller.mensagem,
                   style: const TextStyle(color: Colors.red),
                 ),
                 Row(
