@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
-import 'package:mobile/pages/login/domain/entities/user_entity.dart';
 
 abstract class UserRepository {
-  Future<Either<Exception, UserEntity>> login({
+  Future<Either<Exception, int>> login({
     required String login,
     required String senha,
   });
 
-  Future<Either<Exception, UserEntity>> cadastro({
+  Future<Either<Exception, int>> register({
     required String login,
     required String email,
     required String phone,
     required String senha,
+    required String confirmaSenha,
   });
 }

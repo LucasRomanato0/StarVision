@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobile/app_routes.dart';
+import 'package:mobile/pages/register/ui/controllers/register_controller.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/widgets/container_principal.dart';
 import 'package:mobile/widgets/text_field_widget.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  late RegisterController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = GetIt.I.get();
+  }
 
   @override
   Widget build(BuildContext context) {
