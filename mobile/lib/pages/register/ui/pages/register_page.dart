@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/register/ui/controllers/register_controller.dart';
 import 'package:mobile/shared/app_colors.dart';
+import 'package:mobile/shared/dialogs.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/widgets/container_principal.dart';
 import 'package:mobile/widgets/text_field_widget.dart';
@@ -64,10 +65,18 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'usename',
                   controller: controllerLogin,
                 ),
+                Text(
+                  controller.mensagem,
+                  style: const TextStyle(color: Colors.red),
+                ),
                 TextFieldWidget(
                   labelText: 'Email',
                   hintText: 'teste@email.com',
                   controller: controllerEmail,
+                ),
+                Text(
+                  controller.mensagem,
+                  style: const TextStyle(color: Colors.red),
                 ),
                 TextFieldWidget(
                   labelText: 'Telefone',
@@ -75,11 +84,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   inputFormatters: [MaskedInputFormatter('(##) #####-####')],
                   controller: controllerPhone,
                 ),
+                Text(
+                  controller.mensagem,
+                  style: const TextStyle(color: Colors.red),
+                ),
                 TextFieldWidget(
                   labelText: 'Digite uma senha',
                   hintText: '***********',
                   obscureText: true,
                   controller: controllerPassword,
+                ),
+                Text(
+                  controller.mensagem == ''
+                      ? controller.mensagemSenha
+                      : controller.mensagem,
+                  style: const TextStyle(color: Colors.red),
                 ),
                 TextFieldWidget(
                   labelText: 'Confirme sua senha',
@@ -87,23 +106,49 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: true,
                   controller: controllerConfirmPassword,
                 ),
+                Text(
+                  controller.mensagem == ''
+                      ? controller.mensagemSenha
+                      : controller.mensagem,
+                  style: const TextStyle(color: Colors.red),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
                   child: BotaoAmarelo(
                     onPressed: () async {
-                      await controller.onSubmitted(
-                        login: controllerLogin.text,
-                        email: controllerEmail.text,
-                        phone: controllerPhone.text,
-                        senha: controllerPassword.text,
-                        confirmaSenha: controllerConfirmPassword.text,
-                      );
-
-                      if (controller.status == 201) {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.login,
+                      if (controllerLogin.text.isEmpty ||
+                          controllerEmail.text.isEmpty ||
+                          controllerPhone.text.isEmpty ||
+                          controllerPassword.text.isEmpty ||
+                          controllerConfirmPassword.text.isEmpty) {
+                        controller.setMensagemNull();
+                      } else if (controllerPassword.text !=
+                          controllerConfirmPassword.text) {
+                        controller.setMensagemSenha();
+                      } else {
+                        await controller.onSubmitted(
+                          login: controllerLogin.text,
+                          email: controllerEmail.text,
+                          phone: controllerPhone.text,
+                          senha: controllerPassword.text,
                         );
+
+                        if (controller.status == 201) {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.login,
+                          );
+                        } else if (controller.status == 403) {
+                          Dialogs.showAtencao(
+                            context: context,
+                            msg: 'Nome de usuário já existente',
+                          );
+                          controllerLogin.clear();
+                          // controllerEmail.clear();
+                          // controllerPhone.clear();
+                          controllerPassword.clear();
+                          controllerConfirmPassword.clear();
+                        }
                       }
                     },
                     text: 'Cadastre-se',

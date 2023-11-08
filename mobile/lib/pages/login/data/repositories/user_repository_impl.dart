@@ -26,22 +26,16 @@ class UserRepositoryImpl implements UserRepository {
     required String login,
     required String email,
     required String phone,
-    required String senha,
-    required String confirmaSenha,
+    required String password,
   }) async {
     try {
-      if (senha != confirmaSenha) {
-        return Left(Exception('Senhas diferentes'));
-      } else {
-        final result = await registerDatasource.register(
-          login: login,
-          email: email,
-          phone: phone,
-          senha: senha,
-          confirmaSenha: confirmaSenha,
-        );
-        return Right(result);
-      }
+      final result = await registerDatasource.register(
+        login: login,
+        email: email,
+        phone: phone,
+        password: password,
+      );
+      return Right(result);
     } catch (e) {
       return Left(Exception(e));
     }

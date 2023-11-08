@@ -9,17 +9,16 @@ class RegisterDatasourceImpl implements RegisterDatasource {
     required String login,
     required String email,
     required String phone,
-    required String senha,
-    required String confirmaSenha,
+    required String password,
   }) async {
     try {
       var response = await _dio.post(
         'http://172.29.48.1:3005/cadastro', // colocar o ip da maquina
         data: {
-          login: login,
-          email: email,
-          phone: phone,
-          senha: senha,
+          'login': login,
+          'email': email,
+          'phone': phone,
+          'password': password,
         },
       );
 

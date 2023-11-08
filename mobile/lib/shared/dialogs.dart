@@ -28,4 +28,30 @@ class Dialogs {
       ),
     );
   }
+
+  static Future<dynamic> showAtencao({
+    required BuildContext context,
+    required String msg,
+  }) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) => AlertBoxWidget(
+        title: 'ATENÇÃO',
+        content: msg,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'Voltar'),
+            child: Text(
+              'Voltar',
+              style: TextStyle(
+                fontSize: 24,
+                color: AppColors.azulClaro,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

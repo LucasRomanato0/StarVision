@@ -41,6 +41,22 @@ mixin _$RegisterController on _RegisterController, Store {
     });
   }
 
+  late final _$mensagemSenhaAtom =
+      Atom(name: '_RegisterController.mensagemSenha', context: context);
+
+  @override
+  String get mensagemSenha {
+    _$mensagemSenhaAtom.reportRead();
+    return super.mensagemSenha;
+  }
+
+  @override
+  set mensagemSenha(String value) {
+    _$mensagemSenhaAtom.reportWrite(value, super.mensagemSenha, () {
+      super.mensagemSenha = value;
+    });
+  }
+
   late final _$onSubmittedAsyncAction =
       AsyncAction('_RegisterController.onSubmitted', context: context);
 
@@ -49,14 +65,9 @@ mixin _$RegisterController on _RegisterController, Store {
       {required dynamic login,
       required dynamic email,
       required dynamic phone,
-      required dynamic senha,
-      required dynamic confirmaSenha}) {
-    return _$onSubmittedAsyncAction.run(() => super.onSubmitted(
-        login: login,
-        email: email,
-        phone: phone,
-        senha: senha,
-        confirmaSenha: confirmaSenha));
+      required dynamic senha}) {
+    return _$onSubmittedAsyncAction.run(() => super
+        .onSubmitted(login: login, email: email, phone: phone, senha: senha));
   }
 
   late final _$_RegisterControllerActionController =
@@ -85,10 +96,22 @@ mixin _$RegisterController on _RegisterController, Store {
   }
 
   @override
+  dynamic setMensagemSenha() {
+    final _$actionInfo = _$_RegisterControllerActionController.startAction(
+        name: '_RegisterController.setMensagemSenha');
+    try {
+      return super.setMensagemSenha();
+    } finally {
+      _$_RegisterControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 status: ${status},
-mensagem: ${mensagem}
+mensagem: ${mensagem},
+mensagemSenha: ${mensagemSenha}
     ''';
   }
 }

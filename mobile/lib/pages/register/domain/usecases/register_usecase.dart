@@ -6,8 +6,7 @@ abstract class RegisterUsecase {
     String login,
     String email,
     String phone,
-    String senha,
-    String confirmaSenha,
+    String password,
   );
 }
 
@@ -20,15 +19,13 @@ class RegisterUsecaseImpl implements RegisterUsecase {
     String login,
     String email,
     String phone,
-    String senha,
-    String confirmaSenha,
+    String password,
   ) async {
     return await repo.register(
       login: login,
       email: email,
       phone: phone,
-      senha: senha,
-      confirmaSenha: confirmaSenha,
+      password: password,
     );
   }
 }

@@ -10,7 +10,6 @@ abstract class UserRepository {
     required String login,
     required String email,
     required String phone,
-    required String senha,
-    required String confirmaSenha,
+    required String password,
   });
 }

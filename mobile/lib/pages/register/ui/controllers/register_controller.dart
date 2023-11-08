@@ -17,9 +17,8 @@ abstract class _RegisterController with Store {
     required email,
     required phone,
     required senha,
-    required confirmaSenha,
   }) async {
-    var result = await usecase(login, email, phone, senha, confirmaSenha);
+    var result = await usecase(login, email, phone, senha);
 
     return result.fold(
       (l) => status = 500,
@@ -31,7 +30,14 @@ abstract class _RegisterController with Store {
   String mensagem = '';
   @action
   setMensagem() => mensagem = 'Usuário já existente';
-
   @action
   setMensagemNull() => mensagem = 'Campo obrigatório';
+
+  @observable
+  String mensagemSenha = '';
+  @action
+  setMensagemSenha() {
+    mensagem = '';
+    mensagemSenha = 'Senhas diferentes';
+  }
 }
