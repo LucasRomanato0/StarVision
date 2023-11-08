@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/pages/cart/ui/cart_page.dart';
 import 'package:mobile/pages/produtos/produtos_page.dart';
 import 'package:mobile/shared/app_colors.dart';
 
@@ -17,9 +18,7 @@ class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
     Scaffold(
       backgroundColor: Colors.black,
     ),
-    Scaffold(
-      backgroundColor: Colors.blue,
-    ),
+    CartPage(),
     Scaffold(
       backgroundColor: Colors.green,
     ),

@@ -34,6 +34,6 @@ Map<String, dynamic> routerApp(RouteSettings settings) => {
       //Produtos
       AppRoutes.produtos: MaterialPageRoute(
         settings: settings,
-        builder: (context) => ProdutosPage(),
+        builder: (context) => const ProdutosPage(),
       ),
     };
