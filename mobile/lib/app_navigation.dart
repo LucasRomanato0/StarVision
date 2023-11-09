@@ -3,7 +3,7 @@ import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/bottom_bar/ui/bottom_navigation_bar.dart';
 import 'package:mobile/pages/forgot_password/ui/password_page.dart';
 import 'package:mobile/pages/login/ui/pages/login_page.dart';
-import 'package:mobile/pages/produtos/produtos_page.dart';
+import 'package:mobile/pages/produtos/ui/produtos_page.dart';
 import 'package:mobile/pages/register/ui/pages/register_page.dart';
 
 Map<String, dynamic> routerApp(RouteSettings settings) => {
