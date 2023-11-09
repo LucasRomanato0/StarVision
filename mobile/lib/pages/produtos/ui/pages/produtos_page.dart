@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobile/pages/produtos/ui/controllers/produtos_controller.dart';
 import 'package:mobile/shared/pages/master_page.dart';
 import 'package:mobile/widgets/carousel_item.dart';
 
@@ -11,6 +13,15 @@ class ProdutosPage extends StatefulWidget {
 }
 
 class _ProdutosPageState extends State<ProdutosPage> {
+  late ProdutosController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = GetIt.I.get();
+    controller.getProdutos();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MasterPage(

@@ -3,7 +3,7 @@ import 'package:mobile/pages/produtos/domain/entities/produto_entity.dart';
 import 'package:mobile/pages/produtos/domain/repositories/produto_repository.dart';
 
 abstract class ProdutoUsecase {
-  Future<Either<Exception, ProdutoEntity>> call();
+  Future<Either<Exception, List<ProdutoEntity>>> call();
 }
 
 class ProdutoUsecaseImpl implements ProdutoUsecase {
@@ -11,7 +11,7 @@ class ProdutoUsecaseImpl implements ProdutoUsecase {
   ProdutoUsecaseImpl(this.repo);
 
   @override
-  Future<Either<Exception, ProdutoEntity>> call() async {
+  Future<Either<Exception, List<ProdutoEntity>>> call() async {
     return await repo.getProdutos();
   }
 }

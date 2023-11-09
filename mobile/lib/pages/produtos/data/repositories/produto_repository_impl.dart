@@ -8,7 +8,7 @@ class ProdutoRepositoryImpl implements ProdutoRepository {
   ProdutoRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Exception, ProdutoEntity>> getProdutos() async {
+  Future<Either<Exception, List<ProdutoEntity>>> getProdutos() async {
     try {
       final result = await datasource.getProdutos();
       return Right(result);

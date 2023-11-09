@@ -8,14 +8,17 @@ class ProdutoDatasourceImpl implements ProdutoDatasource {
   final Dio _dio = Dio();
 
   @override
-  Future<ProdutoModel> getProdutos() async {
+  Future<List<ProdutoModel>> getProdutos() async {
     try {
-      var response = await _dio.post(
+      var response = await _dio.get(
         'http://172.29.48.1:3030/products', // colocar o ip da maquina
       );
 
-      Map<String, dynamic> retorno = json.decode(response.data);
-      ProdutoModel objProduto = ProdutoModel.fromJson(retorno);
+      // codigo nojento para transformar a lista que recebo no response
+      // em List<ProdutoModel>
+      List<ProdutoModel> objProduto = (json.decode(response.data) as List)
+          .map((i) => ProdutoModel.fromJson(i))
+          .toList();
 
       return objProduto;
     } catch (e) {
