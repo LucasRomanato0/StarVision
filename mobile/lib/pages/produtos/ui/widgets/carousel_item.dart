@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/container_principal.dart';
 
-class CarouselItem extends StatelessWidget {
+class CarouselItem extends StatefulWidget {
+  final int id;
   final String image;
   final String nome;
   final String preco;
@@ -14,27 +16,41 @@ class CarouselItem extends StatelessWidget {
     required this.preco,
     this.height,
     this.width,
+    required this.id,
   });
 
+  @override
+  State<CarouselItem> createState() => _CarouselItemState();
+}
+
+class _CarouselItemState extends State<CarouselItem> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ContainerPrincipal(
           loginOrRegister: 0,
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
-            height: height ?? MediaQuery.of(context).size.height * 0.18,
-            width: width,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(AppColors.azulClaro),
+              elevation: MaterialStateProperty.all(0),
+            ),
+            child: Image.asset(
+              widget.image,
+              fit: BoxFit.cover,
+              height:
+                  widget.height ?? MediaQuery.of(context).size.height * 0.18,
+              width: widget.width,
+            ),
           ),
         ),
         Text(
-          nome,
+          widget.nome,
           style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
         Text(
-          preco,
+          widget.preco,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,

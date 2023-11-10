@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile/pages/produtos/ui/controllers/produtos_controller.dart';
 import 'package:mobile/shared/pages/master_page.dart';
-import 'package:mobile/widgets/carousel_item.dart';
+import 'package:mobile/pages/produtos/ui/widgets/carousel_item.dart';
 
 class ProdutosPage extends StatefulWidget {
   const ProdutosPage({super.key});
@@ -61,16 +61,19 @@ class _ProdutosPageState extends State<ProdutosPage> {
                   CarouselSlider(
                     items: [
                       CarouselItem(
+                        id: controller.produtoEntity![0]['id'],
                         image: 'assets/images/r2d2_cor.png',
                         nome: controller.produtoEntity![0]['name'],
                         preco: controller.produtoEntity![0]['price'],
                       ),
                       CarouselItem(
+                        id: controller.produtoEntity![1]['id'],
                         image: 'assets/images/bb8.png',
                         nome: controller.produtoEntity![1]['name'],
                         preco: controller.produtoEntity![1]['price'],
                       ),
                       CarouselItem(
+                        id: controller.produtoEntity![2]['id'],
                         image: 'assets/images/d0.png',
                         nome: controller.produtoEntity![2]['name'],
                         preco: controller.produtoEntity![2]['price'],
@@ -101,16 +104,19 @@ class _ProdutosPageState extends State<ProdutosPage> {
                   CarouselSlider(
                     items: [
                       CarouselItem(
+                        id: controller.produtoEntity![3]['id'],
                         image: 'assets/images/pneu.png',
                         nome: controller.produtoEntity![3]['name'],
                         preco: controller.produtoEntity![3]['price'],
                       ),
                       CarouselItem(
+                        id: controller.produtoEntity![4]['id'],
                         image: 'assets/images/suporte.png',
                         nome: controller.produtoEntity![4]['name'],
                         preco: controller.produtoEntity![4]['price'],
                       ),
                       CarouselItem(
+                        id: controller.produtoEntity![5]['id'],
                         image: 'assets/images/controle.png',
                         nome: controller.produtoEntity![5]['name'],
                         preco: controller.produtoEntity![5]['price'],

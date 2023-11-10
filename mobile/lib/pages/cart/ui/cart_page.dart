@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/shared/pages/master_page.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
-import 'package:mobile/widgets/carousel_item.dart';
+import 'package:mobile/pages/produtos/ui/widgets/carousel_item.dart';
 import 'package:mobile/widgets/container_principal.dart';
 
 class CartPage extends StatefulWidget {
@@ -50,16 +50,19 @@ class _CartPageState extends State<CartPage> {
             CarouselSlider(
               items: const [
                 CarouselItem(
+                  id: 1,
                   image: 'assets/images/controle.png',
                   nome: 'Controle de movimento',
                   preco: 'R\$169,99',
                 ),
                 CarouselItem(
+                  id: 1,
                   image: 'assets/images/bb8.png',
                   nome: 'Droid BB8 padrão',
                   preco: 'R\$299,99',
                 ),
                 CarouselItem(
+                  id: 1,
                   image: 'assets/images/d0.png',
                   nome: 'Droid D-0 desgastado',
                   preco: 'R\$189,99',
