@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/cart/ui/controllers/cart_controller.dart';
+import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/shared/pages/master_page.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
 import 'package:mobile/pages/produtos/ui/widgets/carousel_item.dart';
@@ -33,10 +34,11 @@ class _CartPageState extends State<CartPage> {
         child: Observer(
           builder: (BuildContext context) => Column(
             children: [
-              controller.status == 404
-                  ? ContainerPrincipal(
-                      loginOrRegister: 1,
-                      children: [
+              ContainerPrincipal(
+                width: MediaQuery.of(context).size.width,
+                loginOrRegister: 1,
+                children: controller.status == 404
+                    ? [
                         Image.asset('assets/images/carrinho.png'),
                         const Text(
                           'Seu carrinho está vazio :(',
@@ -46,9 +48,34 @@ class _CartPageState extends State<CartPage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
+                      ]
+                    : [
+                        const Row(
+                          children: [
+                            Text(
+                              "Carrinho de compas",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 30),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 25, top: 8),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 2,
+                            decoration: BoxDecoration(
+                              color: AppColors.azulBorda,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        const ContainerPrincipal(
+                          loginOrRegister: 1,
+                          children: [],
+                        )
                       ],
-                    )
-                  : SizedBox(),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                 child: SizedBox(
