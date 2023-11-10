@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile/pages/produtos/data/datasources/produto_datasource.dart';
-import 'package:mobile/pages/produtos/domain/entities/produto_entity.dart';
 import 'package:mobile/pages/produtos/domain/repositories/produto_repository.dart';
 
 class ProdutoRepositoryImpl implements ProdutoRepository {
@@ -8,7 +7,7 @@ class ProdutoRepositoryImpl implements ProdutoRepository {
   ProdutoRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<Exception, List<ProdutoEntity>>> getProdutos() async {
+  Future<Either<Exception, dynamic>> getProdutos() async {
     try {
       final result = await datasource.getProdutos();
       return Right(result);

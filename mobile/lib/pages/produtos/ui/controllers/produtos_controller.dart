@@ -1,4 +1,4 @@
-import 'package:mobile/pages/produtos/domain/entities/produto_entity.dart';
+import 'package:flutter/material.dart';
 import 'package:mobile/pages/produtos/domain/usecases/produto_usecase.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,14 +13,23 @@ abstract class _ProdutosController with Store {
   @observable
   int? status;
   @observable
-  List<ProdutoEntity> produtoEntity = [];
+  List<dynamic>? produtoEntity;
   @action
   getProdutos() async {
     final result = await usecase();
 
     result.fold(
       (l) => status = 500,
-      (r) => produtoEntity = r,
+      (r) {
+        produtoEntity = r.toList();
+      },
     );
+  }
+
+  @observable
+  var loading = ValueNotifier(false);
+  @action
+  showLoading(bool valor) {
+    loading.value = valor;
   }
 }

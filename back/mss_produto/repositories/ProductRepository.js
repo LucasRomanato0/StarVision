@@ -35,14 +35,14 @@ class ProductRepository extends IProductRepository {
       }),
       new Product({
         id: 5,
-        name: "Suporte para carregar o Dr...",
+        name: "Suporte para carregar",
         description: "StarVision LTDA",
         price: "R$100,00",
         photo: "../../assets/suporte.png",
       }),
       new Product({
         id: 6,
-        name: "Controle de movimento te...",
+        name: "Controle de movimento",
         description: "StarVision LTDA",
         price: "R$169,99",
         photo: "../../assets/controle.png",

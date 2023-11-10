@@ -29,15 +29,31 @@ mixin _$ProdutosController on _ProdutosController, Store {
       Atom(name: '_ProdutosController.produtoEntity', context: context);
 
   @override
-  List<ProdutoEntity> get produtoEntity {
+  List<dynamic>? get produtoEntity {
     _$produtoEntityAtom.reportRead();
     return super.produtoEntity;
   }
 
   @override
-  set produtoEntity(List<ProdutoEntity> value) {
+  set produtoEntity(List<dynamic>? value) {
     _$produtoEntityAtom.reportWrite(value, super.produtoEntity, () {
       super.produtoEntity = value;
+    });
+  }
+
+  late final _$loadingAtom =
+      Atom(name: '_ProdutosController.loading', context: context);
+
+  @override
+  ValueNotifier<bool> get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(ValueNotifier<bool> value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
     });
   }
 
@@ -49,11 +65,26 @@ mixin _$ProdutosController on _ProdutosController, Store {
     return _$getProdutosAsyncAction.run(() => super.getProdutos());
   }
 
+  late final _$_ProdutosControllerActionController =
+      ActionController(name: '_ProdutosController', context: context);
+
+  @override
+  dynamic showLoading(bool valor) {
+    final _$actionInfo = _$_ProdutosControllerActionController.startAction(
+        name: '_ProdutosController.showLoading');
+    try {
+      return super.showLoading(valor);
+    } finally {
+      _$_ProdutosControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 status: ${status},
-produtoEntity: ${produtoEntity}
+produtoEntity: ${produtoEntity},
+loading: ${loading}
     ''';
   }
 }
