@@ -57,12 +57,36 @@ mixin _$ProdutosController on _ProdutosController, Store {
     });
   }
 
+  late final _$addStatusAtom =
+      Atom(name: '_ProdutosController.addStatus', context: context);
+
+  @override
+  int? get addStatus {
+    _$addStatusAtom.reportRead();
+    return super.addStatus;
+  }
+
+  @override
+  set addStatus(int? value) {
+    _$addStatusAtom.reportWrite(value, super.addStatus, () {
+      super.addStatus = value;
+    });
+  }
+
   late final _$getProdutosAsyncAction =
       AsyncAction('_ProdutosController.getProdutos', context: context);
 
   @override
   Future getProdutos() {
     return _$getProdutosAsyncAction.run(() => super.getProdutos());
+  }
+
+  late final _$addProductAsyncAction =
+      AsyncAction('_ProdutosController.addProduct', context: context);
+
+  @override
+  Future addProduct(int id) {
+    return _$addProductAsyncAction.run(() => super.addProduct(id));
   }
 
   late final _$_ProdutosControllerActionController =
@@ -84,7 +108,8 @@ mixin _$ProdutosController on _ProdutosController, Store {
     return '''
 status: ${status},
 produtoEntity: ${produtoEntity},
-loading: ${loading}
+loading: ${loading},
+addStatus: ${addStatus}
     ''';
   }
 }

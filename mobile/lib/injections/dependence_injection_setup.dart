@@ -11,10 +11,13 @@ import 'package:mobile/pages/login/domain/repositories/user_repository.dart';
 import 'package:mobile/pages/login/domain/usecases/login_usecase.dart';
 import 'package:mobile/pages/login/external/login_datasource_impl.dart';
 import 'package:mobile/pages/login/ui/controllers/login_controller.dart';
+import 'package:mobile/pages/produtos/data/datasources/add_product_datasource.dart';
 import 'package:mobile/pages/produtos/data/datasources/produto_datasource.dart';
 import 'package:mobile/pages/produtos/data/repositories/produto_repository_impl.dart';
 import 'package:mobile/pages/produtos/domain/repositories/produto_repository.dart';
+import 'package:mobile/pages/produtos/domain/usecases/add_product_usecase.dart';
 import 'package:mobile/pages/produtos/domain/usecases/produto_usecase.dart';
+import 'package:mobile/pages/produtos/external/add_product_datasource_impl.dart';
 import 'package:mobile/pages/produtos/external/produto_datasource_impl.dart';
 import 'package:mobile/pages/produtos/ui/controllers/produtos_controller.dart';
 import 'package:mobile/pages/register/data/datasources/register_datasource.dart';
@@ -37,13 +40,16 @@ class DependenceInjectionSetup {
     getIt.registerLazySingleton<GetCartDatasource>(
       () => GetCartDatasourceImpl(),
     );
+    getIt.registerLazySingleton<AddProductDatasource>(
+      () => AddProductDatasourceImpl(),
+    );
 
     // Repositories
     getIt.registerLazySingleton<UserRepository>(
       () => UserRepositoryImpl(getIt.get(), getIt.get()),
     );
     getIt.registerLazySingleton<ProdutoRepository>(
-      () => ProdutoRepositoryImpl(getIt.get()),
+      () => ProdutoRepositoryImpl(getIt.get(), getIt.get()),
     );
     getIt.registerLazySingleton<CartRepository>(
       () => CartRepositoryImpl(getIt.get()),
@@ -62,11 +68,14 @@ class DependenceInjectionSetup {
     getIt.registerLazySingleton<GetCartUsecase>(
       () => GetCartUsecaseImpl(getIt.get()),
     );
+    getIt.registerLazySingleton<AddProductUsecase>(
+      () => AddProductUsecaseImpl(getIt.get()),
+    );
 
     // Controllers
     getIt.registerFactory(() => LoginController(getIt.get()));
     getIt.registerFactory(() => RegisterController(getIt.get()));
-    getIt.registerFactory(() => ProdutosController(getIt.get()));
+    getIt.registerFactory(() => ProdutosController(getIt.get(), getIt.get()));
     getIt.registerFactory(() => CartController(getIt.get()));
   }
 }

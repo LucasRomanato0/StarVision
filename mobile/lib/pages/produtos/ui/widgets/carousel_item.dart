@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobile/pages/produtos/ui/controllers/produtos_controller.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/widgets/container_principal.dart';
 
@@ -24,6 +26,14 @@ class CarouselItem extends StatefulWidget {
 }
 
 class _CarouselItemState extends State<CarouselItem> {
+  late ProdutosController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = GetIt.I.get();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +41,9 @@ class _CarouselItemState extends State<CarouselItem> {
         ContainerPrincipal(
           loginOrRegister: 0,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.addProduct(widget.id);
+            },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(AppColors.azulClaro),
               elevation: MaterialStateProperty.all(0),
