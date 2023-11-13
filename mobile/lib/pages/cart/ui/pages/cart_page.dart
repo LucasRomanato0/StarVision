@@ -61,7 +61,7 @@ class _CartPageState extends State<CartPage> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 25, top: 8),
+                          padding: const EdgeInsets.only(top: 8),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             height: 2,
@@ -71,14 +71,15 @@ class _CartPageState extends State<CartPage> {
                             ),
                           ),
                         ),
-                        const ContainerPrincipal(
-                          loginOrRegister: 1,
-                          children: [],
-                        ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.3,
+                          // height: MediaQuery.of(context).size.height * 0.3,
+                          height: controller.cartEntity!.length == 1
+                              ? MediaQuery.of(context).size.height * 0.15
+                              : controller.cartEntity!.length == 2
+                                  ? MediaQuery.of(context).size.height * 0.3
+                                  : MediaQuery.of(context).size.height * 0.45,
                           child: ListView.builder(
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.only(top: 8),
                             itemBuilder: (context, index) {
                               return CartWidget(
                                 // image: 'assets/images/bb8.png',
@@ -112,6 +113,13 @@ class _CartPageState extends State<CartPage> {
                               );
                             },
                             itemCount: controller.cartEntity!.length,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(50, 8, 50, 0),
+                          child: BotaoAmarelo(
+                            onPressed: () {},
+                            text: 'Fechar pedido',
                           ),
                         ),
                       ],
