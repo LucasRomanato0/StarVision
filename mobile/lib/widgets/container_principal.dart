@@ -21,7 +21,7 @@ class ContainerPrincipal extends StatelessWidget {
       width: width ?? MediaQuery.of(context).size.width * 0.9,
       // height: 500,
       margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 35),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
       decoration: BoxDecoration(
         color: AppColors.azulClaro,
         borderRadius: BorderRadius.circular(20),

@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile/app_routes.dart';
 import 'package:mobile/pages/cart/ui/controllers/cart_controller.dart';
+import 'package:mobile/pages/cart/ui/widgets/cart_widget.dart';
 import 'package:mobile/shared/app_colors.dart';
 import 'package:mobile/shared/pages/master_page.dart';
 import 'package:mobile/widgets/botao_amarelo.dart';
@@ -32,106 +33,159 @@ class _CartPageState extends State<CartPage> {
     return MasterPage(
       child: Center(
         child: Observer(
-          builder: (BuildContext context) => Column(
-            children: [
-              ContainerPrincipal(
-                width: MediaQuery.of(context).size.width,
-                loginOrRegister: 1,
-                children: controller.status == 404
-                    ? [
-                        Image.asset('assets/images/carrinho.png'),
-                        const Text(
-                          'Seu carrinho está vazio :(',
+          builder: (BuildContext context) => controller.cartEntity == null
+              ? const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
+                    ],
+                  ),
+                )
+              : Column(
+                  children: [
+                    ContainerPrincipal(
+                      width: MediaQuery.of(context).size.width,
+                      loginOrRegister: 1,
+                      children: controller.status == 404
+                          ? [
+                              Image.asset('assets/images/carrinho.png'),
+                              const Text(
+                                'Seu carrinho está vazio :(',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ]
+                          : [
+                              const Row(
+                                children: [
+                                  Text(
+                                    "Carrinho de compas",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 30),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 25, top: 8),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 2,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.azulBorda,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                              ),
+                              const ContainerPrincipal(
+                                loginOrRegister: 1,
+                                children: [],
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.3,
+                                child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  itemBuilder: (context, index) {
+                                    return CartWidget(
+                                      // image: 'assets/images/bb8.png',
+                                      image: controller.cartEntity![index]
+                                                  ["product"][0]["id"] ==
+                                              1
+                                          ? 'assets/images/r2d2_cor.png'
+                                          : controller.cartEntity![index]
+                                                      ["product"][0]["id"] ==
+                                                  2
+                                              ? 'assets/images/bb8.png'
+                                              : controller.cartEntity![index]["product"]
+                                                          [0]["id"] ==
+                                                      3
+                                                  ? 'assets/images/d0.png'
+                                                  : controller.cartEntity![index]
+                                                                  ["product"][0]
+                                                              ["id"] ==
+                                                          4
+                                                      ? 'assets/images/pneu.png'
+                                                      : controller.cartEntity![index]
+                                                                  ["product"][0]["id"] ==
+                                                              5
+                                                          ? 'assets/images/suporte.png'
+                                                          : 'assets/images/controle.png',
+                                      name: controller.cartEntity![index]
+                                          ["product"][0]["name"],
+                                      price: controller.cartEntity![index]
+                                          ["product"][0]["price"],
+                                      qtd: controller.cartEntity![index]["qtd"],
+                                    );
+                                  },
+                                  itemCount: controller.cartEntity!.length,
+                                ),
+                              ),
+                            ],
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 20, top: 30),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: const Text(
+                          'Você pode gostar:',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 30,
                           ),
                         ),
-                      ]
-                    : [
-                        const Row(
-                          children: [
-                            Text(
-                              "Carrinho de compas",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 25, top: 8),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 2,
-                            decoration: BoxDecoration(
-                              color: AppColors.azulBorda,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                        const ContainerPrincipal(
-                          loginOrRegister: 1,
-                          children: [],
-                        )
-                      ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: const Text(
-                    'Você pode gostar:',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
+                      ),
                     ),
-                  ),
+                    CarouselSlider(
+                      items: const [
+                        CarouselItem(
+                          id: 1,
+                          image: 'assets/images/controle.png',
+                          nome: 'Controle de movimento',
+                          preco: 'R\$169,99',
+                        ),
+                        CarouselItem(
+                          id: 1,
+                          image: 'assets/images/bb8.png',
+                          nome: 'Droid BB8 padrão',
+                          preco: 'R\$299,99',
+                        ),
+                        CarouselItem(
+                          id: 1,
+                          image: 'assets/images/d0.png',
+                          nome: 'Droid D-0 desgastado',
+                          preco: 'R\$189,99',
+                        ),
+                      ],
+                      options: CarouselOptions(
+                        enableInfiniteScroll: true,
+                        viewportFraction: 0.5,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        height: MediaQuery.of(context).size.height * 0.4,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: BotaoAmarelo(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.navigationBar,
+                          );
+                        },
+                        text: 'Continuar comprando',
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              CarouselSlider(
-                items: const [
-                  CarouselItem(
-                    id: 1,
-                    image: 'assets/images/controle.png',
-                    nome: 'Controle de movimento',
-                    preco: 'R\$169,99',
-                  ),
-                  CarouselItem(
-                    id: 1,
-                    image: 'assets/images/bb8.png',
-                    nome: 'Droid BB8 padrão',
-                    preco: 'R\$299,99',
-                  ),
-                  CarouselItem(
-                    id: 1,
-                    image: 'assets/images/d0.png',
-                    nome: 'Droid D-0 desgastado',
-                    preco: 'R\$189,99',
-                  ),
-                ],
-                options: CarouselOptions(
-                  enableInfiniteScroll: true,
-                  viewportFraction: 0.5,
-                  enlargeCenterPage: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: BotaoAmarelo(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      AppRoutes.navigationBar,
-                    );
-                  },
-                  text: 'Continuar comprando',
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
