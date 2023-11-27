@@ -8,7 +8,7 @@ class GetCartDatasourceImpl implements GetCartDatasource {
   Future getCart() async {
     try {
       var response = await _dio.get(
-        'http://172.29.48.1:3030/cart', // colocar o ip da maquina
+        'http://172.23.208.1:3030/cart', // colocar o ip da maquina
       );
 
       return response.data;

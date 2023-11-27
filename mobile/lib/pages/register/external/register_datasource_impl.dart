@@ -13,7 +13,7 @@ class RegisterDatasourceImpl implements RegisterDatasource {
   }) async {
     try {
       var response = await _dio.post(
-        'http://172.29.48.1:3005/cadastro', // colocar o ip da maquina
+        'http://172.23.208.1:3005/cadastro', // colocar o ip da maquina
         data: {
           'login': login,
           'email': email,

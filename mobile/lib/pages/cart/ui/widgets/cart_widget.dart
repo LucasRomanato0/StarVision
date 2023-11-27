@@ -71,7 +71,7 @@ class CartWidget extends StatelessWidget {
                         'Qtd: $qtd',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 12,
+                          fontSize: 10,
                         ),
                       ),
                     ),
@@ -79,19 +79,19 @@ class CartWidget extends StatelessWidget {
                     Text(
                       'Excluir',
                       style:
-                          TextStyle(color: AppColors.azulBorda, fontSize: 10),
+                          TextStyle(color: AppColors.azulBorda, fontSize: 9),
                     ),
                     linha(context),
                     Text(
                       'Salvar para mais tarde',
                       style:
-                          TextStyle(color: AppColors.azulBorda, fontSize: 10),
+                          TextStyle(color: AppColors.azulBorda, fontSize: 9),
                     ),
                     linha(context),
                     Text(
                       'Compartilhar',
                       style:
-                          TextStyle(color: AppColors.azulBorda, fontSize: 10),
+                          TextStyle(color: AppColors.azulBorda, fontSize: 9),
                     ),
                   ],
                 ),

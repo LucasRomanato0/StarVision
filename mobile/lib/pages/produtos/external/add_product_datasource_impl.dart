@@ -8,7 +8,7 @@ class AddProductDatasourceImpl implements AddProductDatasource {
   Future<int> addProduct(int id) async {
     try {
       var response = await _dio.post(
-        'http://172.29.48.1:3030/cart', // colocar o ip da maquina
+        'http://172.23.208.1:3030/cart', // colocar o ip da maquina
         data: {'id': id},
       );
 

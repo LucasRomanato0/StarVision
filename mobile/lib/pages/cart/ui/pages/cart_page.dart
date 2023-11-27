@@ -120,6 +120,7 @@ class _CartPageState extends State<CartPage> {
                           child: BotaoAmarelo(
                             onPressed: () {},
                             text: 'Fechar pedido',
+                            size: 25,
                           ),
                         ),
                       ],

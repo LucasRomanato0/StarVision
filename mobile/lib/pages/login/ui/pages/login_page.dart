@@ -69,8 +69,8 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 25),
                   child: TextFieldWidget(
                     controller: controllerEmail,
-                    hintText: 'email@teste.com',
-                    labelText: 'Email',
+                    hintText: 'C21LB',
+                    labelText: 'Username',
                     suffixIcon: const Icon(
                       Icons.email,
                       color: Colors.white,

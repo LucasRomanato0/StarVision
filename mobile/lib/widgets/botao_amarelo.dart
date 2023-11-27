@@ -4,7 +4,8 @@ import 'package:mobile/shared/app_colors.dart';
 class BotaoAmarelo extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
-  const BotaoAmarelo({super.key, required this.onPressed, required this.text});
+  final double? size;
+  const BotaoAmarelo({super.key, required this.onPressed, required this.text, this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class BotaoAmarelo extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           text,
-          style: const TextStyle(color: Colors.black, fontSize: 32),
+          style: TextStyle(color: Colors.black, fontSize: size ?? 32),
         ),
       ),
     );
