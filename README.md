@@ -17,6 +17,9 @@ Os comandos principais.
 - npm start
 
 # PARTE 2 🧩
+## Funcionamento do aplicativo do site StarVision Ltda. - YouTube 🎥
+Acesse o link para entender como o nosso aplicativo está funcionando até o momento: https://www.youtube.com/watch?v=w762NdL5qoU
+
 ## Os scripts do container Docker estão disponíveis no seguintes caminhos:
 - [../back/mss_login/](back/mss_login)
 - [../back/barramento_eventos/](back/barramento_eventos)
